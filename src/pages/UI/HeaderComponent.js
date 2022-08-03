@@ -6,7 +6,9 @@ const Header = () => {
   //TẠO 3 STATE CHO 3 INPUT
   const [locationInput, setLocationInput] = useState("");
   const [dateInput, setDateInput] = useState("");
-  const [amountInput, setAmountInput] = useState("");
+  const [amountAdultInput, setAmountAdultInput] = useState("");
+  const [amountChildrenInput, setAmountChildrenInput] = useState("");
+  const [amountRoomInput, setAmountRoomInput] = useState("");
 
   //HÀM CẬP NHẬT STATE
   const locationChangeHandle = (event) => {
@@ -15,8 +17,14 @@ const Header = () => {
   const dateChangeHandle = (event) => {
     setDateInput(event.target.value);
   };
-  const amountChangeHandle = (event) => {
-    setAmountInput(event.target.value);
+  const amountAdultChangeHandle = (event) => {
+    setAmountAdultInput(event.target.value);
+  };
+  const amountChildrenChangeHandle = (event) => {
+    setAmountChildrenInput(event.target.value);
+  };
+  const amountRoomChangeHandle = (event) => {
+    setAmountRoomInput(`${event.target.value}`);
   };
 
   //HÀM XỬ LÝ KHI ẤN SEARCH
@@ -40,7 +48,7 @@ const Header = () => {
         <form className="row pr-1 form-info" onSubmit={submitFormHandle}>
           <label className="col-3" htmlFor="location">
             <div className="row pt-1">
-              <i className="fa fa-bed col-2"></i>
+              <i className="fa fa-bed col-2  pt-1"></i>
               <input
                 type="text"
                 id="location"
@@ -53,34 +61,104 @@ const Header = () => {
               />
             </div>
           </label>
-          <label className="col-3" htmlFor="dateInput">
+          <label className="col-4" htmlFor="dateInput">
             <div className="row pt-1">
-              <i className="fa fa-calendar col-2"></i>
+              <i className="fa fa-calendar col-2  pt-1"></i>
               <input
                 type="date"
                 id="dateInput"
                 onChange={dateChangeHandle}
                 value={dateInput}
-                className="header-input_box col-8 pl-0"
+                className="header-input_box col-9 pl-0"
                 min="2022-01-01"
                 max="2022-12-31"
               />
             </div>
           </label>
-          <label className="col-4" htmlFor="amountInput">
+
+          <div className="col-3">
+            <div className="row form_input_amount pt-1">
+              <label className="col-4 p-0" htmlFor="amountAdultInput">
+                {/* <div className="row pt-1"> */}
+                <span className="fa fa-male pr-1 "></span>
+                <input
+                  type="text"
+                  id="amountAdultInput"
+                  onChange={amountAdultChangeHandle}
+                  value={amountAdultInput}
+                  className=" header-input_box input_adult  pl-0"
+                  placeholder="1 adult"
+                />
+                {/* </div> */}
+              </label>
+              <label className="col-4 p-0" htmlFor="amountChildrenInput">
+                {/* <div className="row pt-1"> */}
+                <span className="fa p-0 pt-1 pr-1">•</span>
+                <input
+                  type="text"
+                  id="amountChildrenInput"
+                  onChange={amountChildrenChangeHandle}
+                  value={amountChildrenInput}
+                  className=" header-input_box input_children pl-0"
+                  placeholder="0 children"
+                />
+                {/* </div> */}
+              </label>
+              <label className="col-4 p-0" htmlFor="amountRoomInput">
+                {/* <div className="row pt-1"> */}
+                <span className="fa p-0 pt-1 pr-1">•</span>
+                <input
+                  type="text"
+                  id="amountRoomInput"
+                  onChange={amountRoomChangeHandle}
+                  value={amountRoomInput}
+                  className=" header-input_box input_room pl-0"
+                  placeholder="1 room"
+                />
+                {/* </div> */}
+              </label>
+            </div>
+          </div>
+          {/* <label className="col-1" htmlFor="amountAdultInput">
             <div className="row pt-1">
-              <i className="fa fa-male col-2"></i>
+              <span className="fa fa-male col-1  pt-1"></span>
               <input
                 type="text"
-                id="amountInput"
+                id="amountAdultInput"
                 onChange={amountChangeHandle}
                 value={amountInput}
-                className=" header-input_box col-9 pl-0"
-                placeholder="Select number"
+                className=" header-input_box col-8 pl-0"
+                placeholder="1 adult"
               />
             </div>
           </label>
-          <Link to="/search" className="col-2">
+          <label className="col-1" htmlFor="amountChildrenInput">
+            <div className="row pt-1">
+              <span className="fa col-1 p-0 pt-1">•</span>
+              <input
+                type="text"
+                id="amountChildrenInput"
+                onChange={amountChangeHandle}
+                value={amountInput}
+                className=" header-input_box col-8 pl-0"
+                placeholder="1 children"
+              />
+            </div>
+          </label>
+          <label className="col-1" htmlFor="amountRoomInput">
+            <div className="row pt-1">
+              <span className="fa col-1 p-0 pt-1">•</span>
+              <input
+                type="text"
+                id="amountRoomInput"
+                onChange={amountChangeHandle}
+                value={amountInput}
+                className=" header-input_box col-8 pl-0"
+                placeholder="1 room"
+              />
+            </div>
+          </label> */}
+          <Link to="/search" className=" col-2 ">
             <button type="submit" className="btn btn-primary text-white ml-3">
               Search
             </button>

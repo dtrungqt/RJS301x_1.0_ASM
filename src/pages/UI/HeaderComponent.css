@@ -24,3 +24,21 @@
 .form-info .fa {
   color: #999;
 }
+.form_input_amount input {
+  font-size: 14px;
+}
+
+.form_input_amount .input_adult {
+  font-size: 14px;
+  width: 50px;
+}
+
+.form_input_amount .input_children {
+  font-size: 14px;
+  width: 67px;
+}
+
+.form_input_amount .input_room {
+  font-size: 14px;
+  width: 50px;
+}

@@ -16,7 +16,7 @@ const Form = () => {
           placeholder="You Email"
           className="form_btn_email"
         />
-        <button type="sumbit" className="btn form_btn_submit ml-2 btn-primary">
+        <button type="button" className="btn form_btn_submit ml-2 btn-primary">
           Subscribe
         </button>
       </form>
