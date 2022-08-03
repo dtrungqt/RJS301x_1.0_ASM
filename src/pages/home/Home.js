@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBarItem from "../UI/NavBarItem";
 import Header from "../UI/HeaderComponent";
 import Form from "../UI/FormComponent";
@@ -99,12 +99,19 @@ const HotelRenderComponent = (props) => {
 //HOME COMPONENT
 //////////////////////
 const Home = (props) => {
-  //RENDER DANH SÁCH HOTEL
-  // const hotelRender=
+  //hàm sao chép giá trị searchInput từ Header Component chuyển cho App Component
+  const getSearchDataHandler = (enteredSearchData) => {
+    //sao chép data
+    const searchData = { ...enteredSearchData };
+
+    // truyền searchData lên App component
+    props.onSearchInput(searchData);
+  };
   return (
     <div>
       <NavBarItem navBarItems={props.navBarItems} />
-      <Header />
+      {/* HIỂN THỊ THANH SEARCH  */}
+      <Header onGetSearcchData={getSearchDataHandler} />
       {/* HIỂN THỊ CÁC THÀNH PHỐ  */}
       <CityRenderComponent cityListData={props.cityList} />
 

@@ -1,0 +1,41 @@
+.contaier_2_component {
+  margin-top: 30px;
+}
+.container_search_popup {
+  border-style: none;
+  border-radius: 10px;
+  background: #ffc107;
+}
+.container_search_popup_info {
+  margin: 20px;
+  margin-bottom: 10px;
+}
+
+.container_search_popup_info .search_title {
+  font-weight: 700;
+  color: #555;
+}
+.container_search_popup_info .box_container {
+  background: white;
+}
+.container_search_popup_info {
+  color: #555;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.container_search_popup_info .small_text {
+  font-size: 12px;
+}
+
+.container_search_popup_info .number_box {
+  background: white;
+  border: solid 1px #888;
+}
+.container_search_popup_info .number_box.empty {
+  height: 22px;
+}
+.container_search_popup_info .search_box {
+  color: white;
+  background: #007bff;
+}

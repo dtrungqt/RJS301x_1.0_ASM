@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Card from "./CardComponent";
 import "./HeaderComponent.css";
 import { Link } from "react-router-dom";
-const Header = () => {
+const Header = (props) => {
   //TẠO 3 STATE CHO 3 INPUT
   const [locationInput, setLocationInput] = useState("");
   const [dateInput, setDateInput] = useState("");
@@ -28,8 +28,23 @@ const Header = () => {
   };
 
   //HÀM XỬ LÝ KHI ẤN SEARCH
-  const submitFormHandle = () => {
-    // window.location.replace("http://localhost:3000/search");
+  const searchFormHandle = () => {
+    const userInputData = {
+      hotel: locationInput,
+      date: dateInput,
+      // date: new Date(dateInput), // truyền dateInput vào hàm Date, hàm Date sẽ chuyển dổi date string từ dateInput thành đối tượng date
+
+      amountAdult: amountAdultInput,
+      amountChildren: amountChildrenInput,
+      amountRoom: amountRoomInput,
+    };
+
+    props.onGetSearcchData(userInputData);
+    setLocationInput("");
+    setDateInput("");
+    setAmountAdultInput("");
+    setAmountChildrenInput("");
+    setAmountRoomInput("");
   };
 
   return (
@@ -45,7 +60,7 @@ const Header = () => {
         </button>
       </div>
       <div className="container header-input">
-        <form className="row pr-1 form-info" onSubmit={submitFormHandle}>
+        <form className="row pr-1 form-info">
           <label className="col-3" htmlFor="location">
             <div className="row pt-1">
               <i className="fa fa-bed col-2  pt-1"></i>
@@ -159,7 +174,11 @@ const Header = () => {
             </div>
           </label> */}
           <Link to="/search" className=" col-2 ">
-            <button type="submit" className="btn btn-primary text-white ml-3">
+            <button
+              type="button"
+              onClick={searchFormHandle}
+              className="btn btn-primary text-white ml-3"
+            >
               Search
             </button>
           </Link>
