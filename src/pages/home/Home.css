@@ -1,0 +1,72 @@
+.container-city {
+  margin-top: 20px;
+}
+
+.container-city_image img {
+  border-radius: 20px;
+}
+
+.card.container-city_image {
+  border-style: none;
+}
+
+.container-city_image .card-body .card-text {
+  color: white;
+}
+
+.card.container-city_image .card-body {
+  position: absolute;
+  bottom: 5%;
+}
+
+.container-type .card {
+  border-style: none;
+}
+
+.container-type .card .card-footer {
+  border-style: none;
+  background: none;
+  padding: 0px;
+}
+
+.container-type .card .card-footer p {
+  margin: 0px;
+  color: #555;
+}
+
+.card_type_name {
+  font-size: 20px;
+}
+
+.container_hotel .card {
+  border-style: none;
+}
+
+.container_hotel .card .card-footer {
+  background: none;
+  padding: 0px;
+}
+
+.container_hotel .card .card-footer p {
+  margin-bottom: 8px;
+}
+
+.container_hotel .card .card-footer .card_text_name {
+  font-weight: 800;
+}
+
+.container_hotel .card .card-footer .card_text_price {
+  font-weight: 700;
+}
+
+.container_hotel .card .card-footer .card_text_type {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.container_hotel .card .card-footer .card_text_rate {
+  border: solid 1px rgb(27, 27, 126);
+  padding: 1px;
+  background: rgb(27, 27, 126);
+  color: white;
+}

@@ -1,0 +1,11 @@
+.text-button-nav {
+  color: rgb(27, 27, 126);
+}
+.navbar-color a {
+  color: white;
+}
+
+.nav-item-border {
+  border: solid 1px white;
+  border-radius: 20px;
+}
