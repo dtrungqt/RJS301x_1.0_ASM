@@ -1,4 +1,4 @@
-import React, { useId, useState } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Detail from "./pages/detail/Detail";
@@ -8,6 +8,8 @@ import { CITY } from "./shared/city";
 import { TYPE } from "./shared/type";
 import { HOTEL_LIST } from "./shared/hotel_list";
 import { FOOTER } from "./shared/footer";
+import { SEARCH } from "./shared/search";
+import { DETAIL } from "./shared/detail";
 
 function App(props) {
   //CẬP NHẬT CÁC INPUT DATA CỦA ASM VÀO CÁC STATE
@@ -16,6 +18,8 @@ function App(props) {
   const [typeListData, setTypeListData] = useState(TYPE);
   const [hotelListData, setHotelListData] = useState(HOTEL_LIST);
   const [footerListData, setFooterListData] = useState(FOOTER);
+  const [searchResultData, setSearchResultData] = useState(SEARCH);
+  const [detailData, setDetailData] = useState(DETAIL);
   // setNavBar();
   // setCityData();
   // setTypeListData();
@@ -43,6 +47,8 @@ function App(props) {
     });
     console.log(userInput);
   };
+
+  //RENDER
   return (
     <BrowserRouter>
       <Routes>
@@ -66,10 +72,20 @@ function App(props) {
               navBarItems={navBar}
               footerList={footerListData}
               searchDataInput={userInput}
+              searchResult={searchResultData}
             />
           }
         />
-        <Route path="/detail" element={<Detail />} />
+        <Route
+          path="/detail/:hotelId"
+          element={
+            <Detail
+              detailHotel={detailData}
+              navBarItems={navBar}
+              footerList={footerListData}
+            />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

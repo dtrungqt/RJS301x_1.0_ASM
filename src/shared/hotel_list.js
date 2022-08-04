@@ -1,5 +1,6 @@
 export const HOTEL_LIST = [
   {
+    id: 1,
     name: "Aparthotel Stare Miasto",
     city: "Madrid",
     price: 120,
@@ -8,6 +9,7 @@ export const HOTEL_LIST = [
     image_url: "./images/hotel_1.webp",
   },
   {
+    id: 2,
     name: "Comfort Suites Airport",
     city: "Austin",
     price: 140,
@@ -16,6 +18,7 @@ export const HOTEL_LIST = [
     image_url: "./images/hotel_2.jpg",
   },
   {
+    id: 3,
     name: "Four Seasons Hotel",
     city: "Lisbon",
     price: 99,
@@ -24,6 +27,7 @@ export const HOTEL_LIST = [
     image_url: "./images/hotel_3.jpg",
   },
   {
+    id: 4,
     name: "Hilton Garden Inn",
     city: "Berlin",
     price: 105,

@@ -1,14 +1,14 @@
 .contaier_2_component {
   margin-top: 30px;
 }
-.container_search_popup {
+
+.container_search_popup_info {
   border-style: none;
   border-radius: 10px;
   background: #ffc107;
-}
-.container_search_popup_info {
-  margin: 20px;
-  margin-bottom: 10px;
+  /* padding: 25px; */
+  /* margin: 20px;
+  margin-bottom: 10px; */
 }
 
 .container_search_popup_info .search_title {
@@ -38,4 +38,10 @@
 .container_search_popup_info .search_box {
   color: white;
   background: #007bff;
+}
+
+/* SearchList Component  */
+.container_hotel_tag {
+  border: solid 2px #888;
+  border-radius: 5px;
 }

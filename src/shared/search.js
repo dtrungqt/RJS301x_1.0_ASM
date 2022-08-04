@@ -10,6 +10,7 @@ export const SEARCH = [
     rate: 8.9,
     rate_text: "Excellent",
     image_url: "./images/hotel_search_1.webp",
+    size: "small",
   },
   {
     name: "Comfort Suites Airport",
@@ -22,6 +23,7 @@ export const SEARCH = [
     rate: 9.3,
     rate_text: "Exceptional",
     image_url: "./images/hotel_search_2.jpg",
+    size: "medium",
   },
   {
     name: "Four Seasons Hotel",
@@ -34,5 +36,6 @@ export const SEARCH = [
     rate: 8.8,
     rate_text: "Excellent",
     image_url: "./images/hotel_search_3.jpg",
+    size: "big",
   },
 ];

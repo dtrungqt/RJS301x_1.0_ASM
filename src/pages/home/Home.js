@@ -75,7 +75,7 @@ const HotelRenderComponent = (props) => {
           height="253px"
         />
         <div className="card-footer">
-          <Link to="/detail">
+          <Link to={`/detail/${hotel.id}`}>
             <p className="card_text_name">{hotel.name}</p>
           </Link>
           <p className="card_text_city">{hotel.city}</p>
