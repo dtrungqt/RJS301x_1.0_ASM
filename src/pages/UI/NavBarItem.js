@@ -15,20 +15,7 @@ const NavBarItem = (props) => {
   });
 
   return (
-    /*
-    <div className={styles.navbar_container}>
-      <div className={styles.navbar_container__title}>
-        <h3 className={styles.navbar_title}>Booking Website</h3>
-        <div className={styles.navbar_container__button}>
-          <button className={styles.navbar_button}>Register</button>
-          <button className={styles.navbar_button}>Login</button>
-        </div>
-      </div>
-      <ul className={styles.navbar_list}>{navBarList}</ul>
-    </div>
-    */
-
-    <Card>
+    <Card className="pb-5">
       <div className="container pt-3">
         {/* header  */}
         <div className="row">

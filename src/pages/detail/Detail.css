@@ -1,0 +1,20 @@
+.container_detail_hotel .container_detail_hotel_info .small_text {
+  font-size: 14px;
+}
+.container_detail_hotel .container_detail_hotel_info .text_info_bold {
+  font-weight: 600;
+}
+.container_desription .text_small {
+  font-size: 15px;
+}
+.container_desription .title_color {
+  font-size: 18px;
+  color: #666;
+}
+.container_desription .text_big {
+  font-size: 22px;
+}
+
+.container_desription .box_content {
+  background: #c0d4fb;
+}

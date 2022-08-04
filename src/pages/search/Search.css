@@ -6,9 +6,6 @@
   border-style: none;
   border-radius: 10px;
   background: #ffc107;
-  /* padding: 25px; */
-  /* margin: 20px;
-  margin-bottom: 10px; */
 }
 
 .container_search_popup_info .search_title {
@@ -42,6 +39,41 @@
 
 /* SearchList Component  */
 .container_hotel_tag {
-  border: solid 2px #888;
+  border: solid 2px #ccc;
   border-radius: 5px;
+}
+.container_hotel_detail .tag_box {
+  background: #28a745;
+  border-radius: 5px;
+  padding: 2px;
+  display: inline-block;
+  color: white;
+}
+.container_hotel_tag .small_text {
+  font-size: 14px;
+}
+.container_hotel_detail .room_info p {
+  margin-bottom: 5px;
+}
+
+.container_hotel_detail .room_rate .rate_text {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.container_hotel_detail .room_rate .rate_box {
+  color: white;
+  font-weight: 500;
+  background: rgb(27, 27, 126);
+  display: inline-block;
+  padding: 2px;
+  max-width: 30px;
+}
+
+.container_hotel_detail .room_rate .title_fees {
+  font-size: 13px;
+  color: #888;
+}
+.container_hotel_detail .room_rate .title_price {
+  font-size: 30px;
 }

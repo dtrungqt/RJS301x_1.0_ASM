@@ -69,6 +69,75 @@ const SearchPopup = (props) => {
   );
 };
 
+//SearchListItem COMPONENT
+//////////////////////////
+const SearchListItem = (props) => {
+  const listItem = props.dataResult.map((data) => {
+    return (
+      <div className="row container_hotel_tag mb-4" key={data.name}>
+        <div className="col-12 col-md-3 p-0">
+          <img
+            src={data.image_url}
+            alt={data.name}
+            className="m-2 "
+            width="160"
+            height="200px"
+          />
+        </div>
+        <div className="col-12 col-md-9">
+          <div className="row container_hotel_detail">
+            <div className="col-8 room_info  small_text">
+              <h4 className="text-primary mt-2">
+                <b>{data.name}</b>
+              </h4>
+              <p>{data.distance} from center</p>
+              <p className="tag_box">{data.tag}</p>
+              <p>
+                <b>{data.description}</b>
+              </p>
+              <p>{data.type}</p>
+              {data.free_cancel && (
+                <div className="text-success">
+                  <p>
+                    <b>Free cancellation</b>
+                  </p>
+                  <p>
+                    You can cancel later, so lock in this great price today!
+                  </p>
+                </div>
+              )}
+            </div>
+            <div className="col-4 room_rate">
+              <div className="row mt-2">
+                <div className="col-8 rate_text">{data.rate_text}</div>
+                <div className="col-4 rate_box">
+                  <div className=" rate_box ">{data.rate}</div>
+                </div>
+              </div>
+              <div className="clearfix">
+                <div className="title_price mt-5 float-md-right">
+                  ${data.price}
+                </div>
+                <p className="title_fees mb-1 float-md-right">
+                  Includes taxes and fees
+                </p>
+
+                <button
+                  type="button"
+                  className="btn btn-primary  float-md-right mb-2"
+                >
+                  <b>See availability</b>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  });
+  return <div>{listItem}</div>;
+};
+
 //SEARCHLIST COMPONENT
 //////////////////////////
 const SearchList = (props) => {
@@ -105,56 +174,12 @@ const SearchList = (props) => {
     );
   }
 
-  // console.log(searchResult);
-
-  const searchResultRender = searchResult.map((data) => {
-    return (
-      <div className="row container_hotel_tag mb-4" key={data.name}>
-        <div className="col-12 col-md-4">
-          <img
-            src={data.image_url}
-            alt={data.name}
-            className="mt-1"
-            width="240px"
-            height="315px"
-          />
-        </div>
-        <div className="col-12 col-md-8">
-          <div className="row">
-            <div className="col-8">
-              <h4>{data.name}</h4>
-              <p>{data.distance} from center</p>
-              <p>{data.tag}</p>
-              <p>{data.description}</p>
-              <p>{data.type}</p>
-              {data.free_cancel && (
-                <div>
-                  <p>Free cancellation</p>
-                  <p>
-                    You can cancel later, so lock in this great price today!
-                  </p>
-                </div>
-              )}
-            </div>
-            <div className="col-4">
-              <div className="row">
-                <div className="col-8">{data.rate_text}</div>
-                <div className="col-4">{data.rate}</div>
-              </div>
-              <div>${data.price}</div>
-              <p>Includes taxes and fees</p>
-              <button type="button" className="btn btn-primary">
-                See availability
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  });
-
   //RENDER
-  return <div className="col-12 col-sm-8">{searchResultRender}</div>;
+  return (
+    <div className="col-12 col-sm-8">
+      <SearchListItem dataResult={searchResult} />
+    </div>
+  );
 };
 
 ///////////////////////////
@@ -170,6 +195,7 @@ const Search = (props) => {
   if (!searchInput.amountChildren) searchInput.amountChildren = 0;
   if (!searchInput.amountRoom || searchInput.amountRoom === "0")
     searchInput.amountRoom = 1;
+
   return (
     <div>
       <NavBarItem navBarItems={props.navBarItems} />
