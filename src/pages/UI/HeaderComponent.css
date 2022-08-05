@@ -42,3 +42,15 @@
   font-size: 14px;
   width: 50px;
 }
+.date_range_position {
+  position: absolute;
+  left: 43%;
+  transform: translateX(-50%);
+  top: 103%;
+  z-index: 10;
+  display: none;
+}
+
+.date_range_display {
+  display: block;
+}

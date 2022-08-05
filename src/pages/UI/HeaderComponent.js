@@ -2,21 +2,34 @@ import React, { useState } from "react";
 import Card from "./CardComponent";
 import "./HeaderComponent.css";
 import { Link } from "react-router-dom";
+//import React-date-rage library
+import "react-date-range/dist/styles.css"; // main style file
+import "react-date-range/dist/theme/default.css"; // theme css file
+import { DateRange } from "react-date-range";
+
 const Header = (props) => {
-  //TẠO 3 STATE CHO 3 INPUT
+  //TẠO STATE CHO INPUT
   const [locationInput, setLocationInput] = useState("");
-  const [dateInput, setDateInput] = useState("");
   const [amountAdultInput, setAmountAdultInput] = useState("");
   const [amountChildrenInput, setAmountChildrenInput] = useState("");
   const [amountRoomInput, setAmountRoomInput] = useState("");
+
+  //state sử dụng cho DateRange Component
+  const [dateInput, setDateInput] = useState([
+    {
+      startDate: new Date(),
+      endDate: null,
+      key: "selection",
+    },
+  ]);
+  //state để quyết định hiển thị model DateRage -true: hiển thị, false: ẩn
+  const [dateRange, setDateRange] = useState(false);
 
   //HÀM CẬP NHẬT STATE
   const locationChangeHandle = (event) => {
     setLocationInput(event.target.value);
   };
-  const dateChangeHandle = (event) => {
-    setDateInput(event.target.value);
-  };
+
   const amountAdultChangeHandle = (event) => {
     setAmountAdultInput(event.target.value);
   };
@@ -27,13 +40,28 @@ const Header = (props) => {
     setAmountRoomInput(`${event.target.value}`);
   };
 
+  //Hàm cập nhật giá trị dateRange để quyết định ẩn hay hiện DateRangeComponent
+  const openDateRangeHandle = (event) => {
+    setDateRange((prevState) => !prevState);
+  };
+
+  //hàm đóng cửa sổ DateRange Component bằng cách nhấn nút ESC
+  const hiddenDateRangeHandle = (event) => {
+    if (event.key === "Escape") setDateRange(false);
+  };
+
+  //Hiển thị ngày tháng được chọn ở DateRange
+  const dateChoose = `${dateInput[0].startDate.toLocaleDateString()} ${
+    dateInput[0].endDate
+      ? `to ${dateInput[0].endDate.toLocaleDateString()}`
+      : ""
+  }`;
+
   //HÀM XỬ LÝ KHI ẤN SEARCH
   const searchFormHandle = () => {
     const userInputData = {
       hotel: locationInput,
-      date: dateInput,
-      // date: new Date(dateInput), // truyền dateInput vào hàm Date, hàm Date sẽ chuyển dổi date string từ dateInput thành đối tượng date
-
+      date: dateChoose,
       amountAdult: amountAdultInput,
       amountChildren: amountChildrenInput,
       amountRoom: amountRoomInput,
@@ -41,10 +69,13 @@ const Header = (props) => {
 
     props.onGetSearcchData(userInputData);
     setLocationInput("");
-    setDateInput("");
     setAmountAdultInput("");
     setAmountChildrenInput("");
     setAmountRoomInput("");
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo(0, 0); //cuộn lên đầu trang
   };
 
   return (
@@ -71,30 +102,21 @@ const Header = (props) => {
                 onChange={locationChangeHandle}
                 value={locationInput}
                 className=" header-input_box col-8 pl-0"
-                // className="col-3 header-input_box"
                 placeholder="Where are you going?"
               />
             </div>
           </label>
+
+          {/* HIEN THI LICH  */}
           <label className="col-4" htmlFor="dateInput">
-            <div className="row pt-1">
+            <div className="row pt-1" onClick={openDateRangeHandle}>
               <i className="fa fa-calendar col-2  pt-1"></i>
-              <input
-                type="date"
-                id="dateInput"
-                onChange={dateChangeHandle}
-                value={dateInput}
-                className="header-input_box col-9 pl-0"
-                min="2022-01-01"
-                max="2022-12-31"
-              />
+              <div className="text-muted">{dateChoose}</div>
             </div>
           </label>
-
           <div className="col-3">
             <div className="row form_input_amount pt-1">
               <label className="col-4 p-0" htmlFor="amountAdultInput">
-                {/* <div className="row pt-1"> */}
                 <span className="fa fa-male pr-1 "></span>
                 <input
                   type="text"
@@ -104,10 +126,9 @@ const Header = (props) => {
                   className=" header-input_box input_adult  pl-0"
                   placeholder="1 adult"
                 />
-                {/* </div> */}
               </label>
+
               <label className="col-4 p-0" htmlFor="amountChildrenInput">
-                {/* <div className="row pt-1"> */}
                 <span className="fa p-0 pt-1 pr-1">•</span>
                 <input
                   type="text"
@@ -117,8 +138,8 @@ const Header = (props) => {
                   className=" header-input_box input_children pl-0"
                   placeholder="0 children"
                 />
-                {/* </div> */}
               </label>
+
               <label className="col-4 p-0" htmlFor="amountRoomInput">
                 {/* <div className="row pt-1"> */}
                 <span className="fa p-0 pt-1 pr-1">•</span>
@@ -130,50 +151,12 @@ const Header = (props) => {
                   className=" header-input_box input_room pl-0"
                   placeholder="1 room"
                 />
-                {/* </div> */}
               </label>
             </div>
           </div>
-          {/* <label className="col-1" htmlFor="amountAdultInput">
-            <div className="row pt-1">
-              <span className="fa fa-male col-1  pt-1"></span>
-              <input
-                type="text"
-                id="amountAdultInput"
-                onChange={amountChangeHandle}
-                value={amountInput}
-                className=" header-input_box col-8 pl-0"
-                placeholder="1 adult"
-              />
-            </div>
-          </label>
-          <label className="col-1" htmlFor="amountChildrenInput">
-            <div className="row pt-1">
-              <span className="fa col-1 p-0 pt-1">•</span>
-              <input
-                type="text"
-                id="amountChildrenInput"
-                onChange={amountChangeHandle}
-                value={amountInput}
-                className=" header-input_box col-8 pl-0"
-                placeholder="1 children"
-              />
-            </div>
-          </label>
-          <label className="col-1" htmlFor="amountRoomInput">
-            <div className="row pt-1">
-              <span className="fa col-1 p-0 pt-1">•</span>
-              <input
-                type="text"
-                id="amountRoomInput"
-                onChange={amountChangeHandle}
-                value={amountInput}
-                className=" header-input_box col-8 pl-0"
-                placeholder="1 room"
-              />
-            </div>
-          </label> */}
-          <Link to="/search" className=" col-2 ">
+
+          {/* VẤN ĐỀ: KHI SỬ DỤNG LINK ĐỂ MỞ TRANG MỚI, TRANG MỚI ĐƯỢC MỞ RA NHƯNG KHÔNG NẰM Ở ĐẦU TRANG => TẠO HÀM scrollToTop ĐỂ TRANG MỞ RA LUÔN NẰM Ở ĐẦU TRANG  */}
+          <Link to="/search" onClick={scrollToTop} className=" col-2 ">
             <button
               type="button"
               onClick={searchFormHandle}
@@ -183,6 +166,19 @@ const Header = (props) => {
             </button>
           </Link>
         </form>
+      </div>
+
+      {/* dataRange là true (khi bấm vào icon lịch) thì hiển thị, false thì ẩn DataRange Component  */}
+      <div
+        className={`date_range_position ${dateRange && "date_range_display"}`}
+        onKeyDown={hiddenDateRangeHandle}
+      >
+        <DateRange
+          editableDateInputs={true}
+          onChange={(item) => setDateInput([item.selection])}
+          moveRangeOnFirstSelection={false}
+          ranges={dateInput}
+        />
       </div>
     </Card>
   );

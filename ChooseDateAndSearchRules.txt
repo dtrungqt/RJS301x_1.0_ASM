@@ -1,0 +1,7 @@
+1. Hiển thị hoặc ẩn Model lịch bằng cách click vào trường input Lịch. Ngoài ra có thể đóng Model này bằng cách ấn ESC sau khi đã chọn được khoảng thời gian.
+
+2. Quy tắc Hiển thị danh sách khách sạn:
+- Hiển thị kết quả theo tên khách sạn hoặc thành phố nếu nhập đúng (có chứa ký tự) tên Khách sạn hoặc Thành phố của khách sạn và không quan tâm đến các trường còn lại.
+- Nếu nhập sai tên thì hiển thị kết quả theo giá và số lượng phòng.
+- Nếu không nhập giá thì hiển thị kết quả theo số lượng phòng.
+- Số phòng tính theo số giường. Giá trị mặc định của Adult, Children và Room lần lượt là 1,0,1

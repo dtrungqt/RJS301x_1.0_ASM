@@ -1,7 +1,6 @@
 import React from "react";
 import "./NavBarItem.css";
 import Card from "./CardComponent";
-// import styles from "./NavBarItem.module.css";
 
 const NavBarItem = (props) => {
   const navBarList = props.navBarItems.map((item) => {

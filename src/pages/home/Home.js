@@ -6,7 +6,7 @@ import Footer from "../UI/FooterComponent";
 import "./Home.css";
 import { Link } from "react-router-dom";
 
-//CITYRENDER COMPONENT
+//HIỂN THỊ DANH SÁCH THÀNH PHỐ
 //////////////////////
 const CityRenderComponent = (props) => {
   const cityRender = props.cityListData.map((city) => {
@@ -35,7 +35,7 @@ const CityRenderComponent = (props) => {
   );
 };
 
-//TYPERENDER COMPONENT
+//HIỂN THỊ DANH SÁCH CÁC LOẠI NHÀ Ở
 //////////////////////
 const TypeRenderComponent = (props) => {
   const typeRender = props.typeListData.map((type) => {
@@ -62,9 +62,12 @@ const TypeRenderComponent = (props) => {
   );
 };
 
-//HOTELRENDER COMPONENT
+//HIỂN THỊ DANH SÁCH KHÁCH SẠN
 //////////////////////
 const HotelRenderComponent = (props) => {
+  const scrollToTop = () => {
+    window.scrollTo(0, 0); //cuộn lên đầu trang
+  };
   const hotelRender = props.hotelListData.map((hotel) => {
     return (
       <div className="card col-12 col-md-3" key={hotel.name}>
@@ -75,7 +78,8 @@ const HotelRenderComponent = (props) => {
           height="253px"
         />
         <div className="card-footer">
-          <Link to={`/detail/${hotel.id}`}>
+          {/* VẤN ĐỀ: KHI SỬ DỤNG LINK ĐỂ MỞ TRANG MỚI, TRANG MỚI ĐƯỢC MỞ RA NHƯNG KHÔNG NẰM Ở ĐẦU TRANG => TẠO HÀM scrollToTop ĐỂ TRANG MỞ RA LUÔN NẰM Ở ĐẦU TRANG  */}
+          <Link to={`/detail/${hotel.id}`} onClick={scrollToTop}>
             <p className="card_text_name">{hotel.name}</p>
           </Link>
           <p className="card_text_city">{hotel.city}</p>
@@ -95,32 +99,23 @@ const HotelRenderComponent = (props) => {
     </div>
   );
 };
+
 /////////////////////
-//HOME COMPONENT
+//HIỂN THỊ TOÀN BỘ TRANG HOME
 //////////////////////
 const Home = (props) => {
   //hàm sao chép giá trị searchInput từ Header Component chuyển cho App Component
   const getSearchDataHandler = (enteredSearchData) => {
-    //sao chép data
-    const searchData = { ...enteredSearchData };
-
-    // truyền searchData lên App component
-    props.onSearchInput(searchData);
+    const searchData = { ...enteredSearchData }; //sao chép data
+    props.onSearchInput(searchData); // truyền searchData lên App component
   };
   return (
     <div>
       <NavBarItem navBarItems={props.navBarItems} />
-      {/* HIỂN THỊ THANH SEARCH  */}
       <Header onGetSearcchData={getSearchDataHandler} />
-      {/* HIỂN THỊ CÁC THÀNH PHỐ  */}
       <CityRenderComponent cityListData={props.cityList} />
-
-      {/* HIỂN THỊ CÁC LOẠI KHÁCH SẠN  */}
       <TypeRenderComponent typeListData={props.typeList} />
-
-      {/* HIỂN THỊ CÁC LOẠI KHÁCH SẠN  */}
       <HotelRenderComponent hotelListData={props.hotelList} />
-
       <Form />
       <Footer footerListData={props.footerList} />
     </div>
