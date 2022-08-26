@@ -5,10 +5,12 @@ import MovieList from "../../UI/MovieList";
 import useHttpHook from "../../hooks/use-http";
 
 function Browse() {
-  const [originalsMovieData, setOriginalsMovieData] = useState([]);
+  const [originalsMovieBannerData, setOriginalsMovieBannerData] = useState([]);
+  const [originalsMovieListData, setOriginalsMovieListData] = useState([]);
+
   const {
-    isLoading,
-    error,
+    isLoading: originalsMovieLoading,
+    error: originalsMovieError,
     sendRequest: fetchNetflixOriginals,
   } = useHttpHook();
 
@@ -16,23 +18,35 @@ function Browse() {
     const apiLink =
       "https://api.themoviedb.org/3/discover/tv?api_key=a211d22bb5d4917ee91235c99b23e6aa&with_network=123";
 
-    const processDataFn = (data) => {
-      setOriginalsMovieData([
+    const processOriginalsMovieBannerDataFn = (data) => {
+      setOriginalsMovieBannerData([
         data.results[Math.floor(Math.random() * data.results.length - 1)],
-      ]);
+      ]); // chỉ lấy data 1 film
     };
 
-    fetchNetflixOriginals(apiLink, processDataFn);
+    const processOriginalsMovieListDataFn = (item) => {
+      setOriginalsMovieListData(item.results); // lấy data của tất cả film
+    };
+
+    fetchNetflixOriginals(apiLink, processOriginalsMovieBannerDataFn);
+    fetchNetflixOriginals(apiLink, processOriginalsMovieListDataFn);
   }, [fetchNetflixOriginals]);
+
+  console.log(originalsMovieListData);
+
   return (
     <React.Fragment>
       <NavBar />
       <Banner
-        movieData={originalsMovieData}
-        loading={isLoading}
-        error={error}
+        movieData={originalsMovieBannerData}
+        loading={originalsMovieLoading}
+        error={originalsMovieError}
       />
-      <MovieList />
+      <MovieList
+        originalsMovieList={originalsMovieListData}
+        loading={originalsMovieLoading}
+        error={originalsMovieError}
+      />
     </React.Fragment>
   );
 }

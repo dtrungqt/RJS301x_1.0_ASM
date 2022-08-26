@@ -1,12 +1,11 @@
 import React from "react";
+import useRenderDataHook from "../hooks/use-renderData";
 
 const Banner = (props) => {
   console.log(props.movieData);
 
-  let originalFilm = <p>Found no movies.</p>;
-
-  if (props.movieData.length > 0) {
-    originalFilm = props.movieData.map((data) => {
+  const renderBannerFn = (renderData) => {
+    return renderData.map((data) => {
       return (
         <div
           className="banner-container background-center"
@@ -26,13 +25,13 @@ const Banner = (props) => {
         </div>
       );
     });
-  }
-  if (props.error) {
-    originalFilm = <p>{props.error}</p>;
-  }
-  if (props.Loading) {
-    originalFilm = <p>Loading...</p>;
-  }
+  };
+  const originalFilm = useRenderDataHook(
+    renderBannerFn,
+    props.movieData,
+    props.loading,
+    props.error
+  );
 
   return <React.Fragment>{originalFilm}</React.Fragment>;
 };

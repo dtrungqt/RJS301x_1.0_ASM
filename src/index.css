@@ -14,6 +14,7 @@ code {
 
 /* CSS CHO NarBar  */
 /*------------------------------------------------------------*/
+
 .navbar-container {
   position: fixed;
   left: 0;
@@ -59,14 +60,15 @@ code {
 }
 .navbar-container .app-name {
   text-decoration: none;
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 26px;
+  font-weight: 800;
 }
 .navbar-container .search-icon {
   cursor: pointer;
 }
 
 /* CSS CHO Banner  */
+/*------------------------------------------------------------*/
 
 /* css cho background cua banner o chinh giua và responsive  */
 .banner-container.background-center {
@@ -85,9 +87,6 @@ code {
   position: absolute;
   top: 35%;
   font-weight: 500;
-  /* left: 50%; */
-  /* transform: translateX(-50%); */
-  /* transform: translateY(-50%); */
 }
 
 /* CSS overflow paragraph  */
@@ -119,4 +118,51 @@ code {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
+}
+
+/* CSS CHO OriginalList  */
+/*------------------------------------------------------------*/
+
+.originalList-container {
+  /* hiển thị theo chiều ngang */
+  overflow: auto;
+  white-space: nowrap;
+
+  background-color: #000;
+}
+
+/* css thanh scrollbar  */
+/* width */
+::-webkit-scrollbar {
+  height: 1vh;
+}
+
+/* Track - thanh chứa scroll */
+::-webkit-scrollbar-track {
+  background: #3f3f3f;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(169, 169, 169);
+  border-radius: 5px;
+  width: 10vw;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(90, 90, 90);
+}
+
+.original-poster {
+  width: 9vw;
+  height: 30vh;
+}
+
+.transition {
+  transition: transform 0.5s;
+}
+
+.transition:hover {
+  transform: scale(1.1, 1.1);
 }

@@ -1,10 +1,14 @@
 import React from "react";
 import OriginalList from "./type_movie/OriginalList";
 
-const MovieList = () => {
+const MovieList = (props) => {
   return (
     <React.Fragment>
-      <OriginalList />
+      <OriginalList
+        originalsMovieList={props.originalsMovieList}
+        loading={props.loading}
+        error={props.error}
+      />
     </React.Fragment>
   );
 };
