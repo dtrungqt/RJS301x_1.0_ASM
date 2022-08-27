@@ -27,7 +27,7 @@ const NavBar = () => {
           Movie App
         </a>
         <svg
-          className="search-icon svg-inline--fa fa-search fa-w-16 mt-3 me-4"
+          className="search-icon svg-inline--fa fa-search fa-w-16 mt-3 me-5"
           width="30px"
           height="30px"
           fill="#ccc"

@@ -1,15 +1,17 @@
 import React from "react";
-import OriginalList from "./type_movie/OriginalList";
+import MovieItem from "./type_movie/MovieItem";
 
 const MovieList = (props) => {
   return (
-    <React.Fragment>
-      <OriginalList
+    <div className="movieList-container">
+      <MovieItem
         originalsMovieList={props.originalsMovieList}
         loading={props.loading}
         error={props.error}
+        isTitle={false}
+        isPoster={true} //true: hiển thị ảnh film dưới dạng poster
       />
-    </React.Fragment>
+    </div>
   );
 };
 

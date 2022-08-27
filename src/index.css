@@ -13,7 +13,8 @@ code {
 }
 
 /* CSS CHO NarBar  */
-/*------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------*/
 
 .navbar-container {
   position: fixed;
@@ -60,15 +61,18 @@ code {
 }
 .navbar-container .app-name {
   text-decoration: none;
-  font-size: 26px;
+  font-size: 1.7rem;
   font-weight: 800;
 }
 .navbar-container .search-icon {
   cursor: pointer;
 }
+/*-------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------*/
 
 /* CSS CHO Banner  */
-/*------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------*/
 
 /* css cho background cua banner o chinh giua và responsive  */
 .banner-container.background-center {
@@ -83,14 +87,17 @@ code {
 }
 
 .banner-info {
-  width: 35vw;
   position: absolute;
   top: 35%;
   font-weight: 500;
+  margin-left: 3rem;
 }
-
-/* CSS overflow paragraph  */
 .banner-info-box {
+  width: 35vw;
+  /* margin-left: 3rem; */
+}
+/* CSS overflow paragraph  */
+.banner-overview {
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -118,17 +125,29 @@ code {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
+  width: 50vw;
+}
+/*-------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------*/
+
+/* CSS CHO movielList  */
+/*-------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------*/
+.movie-container {
+  padding-bottom: 5rem;
 }
 
-/* CSS CHO OriginalList  */
-/*------------------------------------------------------------*/
+.movieList-container {
+  background-color: #000;
+}
 
-.originalList-container {
+/* CSS cho movieItem  */
+/*------------------------------------------------------------*/
+.movieItem-container {
   /* hiển thị theo chiều ngang */
   overflow: auto;
   white-space: nowrap;
-
-  background-color: #000;
+  margin: 0px 3rem;
 }
 
 /* css thanh scrollbar  */
@@ -154,7 +173,7 @@ code {
   background: rgb(90, 90, 90);
 }
 
-.original-poster {
+.poster {
   width: 9vw;
   height: 30vh;
 }
@@ -166,3 +185,60 @@ code {
 .transition:hover {
   transform: scale(1.1, 1.1);
 }
+/*------------------------------------------------------------*/
+
+.movieItem-title {
+  font-size: 1.5rem;
+  color: #fff;
+}
+/*-------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------*/
+
+/* RESPONSIVE  */
+/*-------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------*/
+@media only screen and (max-width: 992px) {
+  .banner-name {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .banner-info {
+    top: 30%;
+  }
+
+  .poster {
+    width: 10vw;
+    height: 20vh;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .banner-info {
+    margin: 1rem;
+  }
+  .banner-info-box {
+    width: 90vw;
+  }
+
+  .banner-overview {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .poster {
+    width: 15vw;
+    height: 20vh;
+  }
+
+  .movieItem-container {
+    /* hiển thị theo chiều ngang */
+    margin: 0px 1rem;
+  }
+}
+/*-------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------*/
