@@ -9,11 +9,13 @@ const MovieItem = (props) => {
     return listData.map((data) => {
       return (
         <img
-          className={`${props.isPoster ? "poster" : "backdrop"} transition m-2`}
+          className={`${
+            props.isPoster ? "poster" : "backdrop"
+          } transition m-2 text-white`}
           src={`https://image.tmdb.org/t/p/original${
             props.isPoster ? data.poster_path : data.backdrop_path
           }`}
-          alt={data.name}
+          alt={data.title}
           key={data.id}
         />
       );
@@ -22,13 +24,13 @@ const MovieItem = (props) => {
 
   const originalsMovie = useRenderDataHook(
     renderMovieListFn,
-    props.originalsMovieList,
+    props.movieData,
     props.loading,
     props.error
   );
 
   return (
-    <div className="movie-container pt-5">
+    <div className="movie-container">
       {props.isTitle && <p className="movieItem-title ms-4">{props.isTitle}</p>}
       <div className="movieItem-container pb-2">{originalsMovie}</div>
     </div>

@@ -134,7 +134,8 @@ code {
 /*-------------------------------------------------------------------------------------------------*/
 /*------------------------------------------------------------------------------------------------*/
 .movie-container {
-  padding-bottom: 5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2.2rem;
 }
 
 .movieList-container {
@@ -178,6 +179,11 @@ code {
   height: 30vh;
 }
 
+.backdrop {
+  width: 15vw;
+  height: 15vh;
+}
+
 .transition {
   transition: transform 0.5s;
 }
@@ -188,7 +194,7 @@ code {
 /*------------------------------------------------------------*/
 
 .movieItem-title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #fff;
 }
 /*-------------------------------------------------------------------------------------------------*/
@@ -211,6 +217,10 @@ code {
   .poster {
     width: 10vw;
     height: 20vh;
+  }
+  .backdrop {
+    width: 15vw;
+    height: 12vh;
   }
 }
 
@@ -235,6 +245,10 @@ code {
     height: 20vh;
   }
 
+  .backdrop {
+    width: 20vw;
+    height: 10vh;
+  }
   .movieItem-container {
     /* hiển thị theo chiều ngang */
     margin: 0px 1rem;

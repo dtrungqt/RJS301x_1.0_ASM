@@ -7,10 +7,10 @@ const useRenderDataHook = (renderDataFn, data, loading, error) => {
     moviesData = renderDataFn(data);
   }
   if (error) {
-    moviesData = <p>{error}</p>;
+    moviesData = <p className="text-danger">{error}</p>;
   }
   if (loading) {
-    moviesData = <p>Loading...</p>;
+    moviesData = <p className="text-danger">Loading...</p>;
   }
 
   return moviesData;
