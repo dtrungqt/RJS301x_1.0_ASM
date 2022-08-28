@@ -2,7 +2,7 @@ import React from "react";
 import useRenderDataHook from "../hooks/use-renderData";
 
 const Banner = (props) => {
-  console.log(props.movieData);
+  // console.log(props.movieData);
 
   const renderBannerFn = (renderData) => {
     return renderData.map((data) => {

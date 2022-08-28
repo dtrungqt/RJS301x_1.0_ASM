@@ -3,7 +3,7 @@ import MovieItem from "./type_movie/MovieItem";
 
 const MovieList = (props) => {
   // console.log(props.trendingMovieData);
-  // console.log(props.romanceMovieData);
+  // console.log(props.trendingMovieData);
   return (
     <div className="movieList-container">
       <MovieItem
