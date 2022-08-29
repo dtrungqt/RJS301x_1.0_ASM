@@ -1,11 +1,16 @@
-import React from 'react';
+import React from "react";
+import NavBar from "../../UI/NavBar";
+import SearchForm from "../../UI/SearchForm";
+import ResultList from "../../UI/ResultList";
 
 const Search = () => {
-	return (
-		<div className='app'>
-			<h1>Search</h1>
-		</div>
-	);
+  return (
+    <React.Fragment>
+      <NavBar />
+      <SearchForm />
+      <ResultList />
+    </React.Fragment>
+  );
 };
 
 export default Search;

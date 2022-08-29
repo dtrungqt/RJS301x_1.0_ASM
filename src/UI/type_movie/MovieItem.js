@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import useRenderDataHook from "../../hooks/use-renderData";
 import MovieDetail from "./MovieDetail";
-import useHttpHook from "../../hooks/use-http";
+// import useHttpHook from "../../hooks/use-http";
 
 const MovieItem = (props) => {
   const [infoMovieData, setInfoMovieData] = useState([]);
   const [display, setDisplay] = useState(false); //true: hiển thị MovieDetail - false: ẩn MovieDetail
   const [idTrailer, setIDTrailer] = useState(0);
-  const [trailerData, setTrailerData] = useState([]);
+  // const [trailerData, setTrailerData] = useState([]);
 
   // console.log(idTrailer);
   // console.log(idMovie);
@@ -52,19 +52,19 @@ const MovieItem = (props) => {
   );
 
   //LẤY DATA CỦA TRAILER MOVIE
-  const { isLoading, error, sendRequest: fetchTrailerData } = useHttpHook();
+  // const { isLoading, error, sendRequest: fetchTrailerData } = useHttpHook();
 
-  const apiLink = `https://api.themoviedb.org/3/movie/${idTrailer}/videos?api_key=a211d22bb5d4917ee91235c99b23e6aa`;
+  // const apiLink = `https://api.themoviedb.org/3/movie/${idTrailer}/videos?api_key=a211d22bb5d4917ee91235c99b23e6aa`;
 
-  //fetch trailer movie data
-  useEffect(() => {
-    const getTrailerDataFn = (data) => {
-      setTrailerData(data.results);
-    };
+  // //fetch trailer movie data
+  // useEffect(() => {
+  //   const getTrailerDataFn = (data) => {
+  //     setTrailerData(data.results);
+  //   };
 
-    fetchTrailerData(apiLink, getTrailerDataFn);
-  }, [fetchTrailerData, apiLink]);
-  // console.log(trailerData);
+  //   fetchTrailerData(apiLink, getTrailerDataFn);
+  // }, [fetchTrailerData, apiLink]);
+  // // console.log(trailerData);
 
   return (
     <React.Fragment>
@@ -79,7 +79,8 @@ const MovieItem = (props) => {
         <MovieDetail
           movieData={infoMovieData}
           isOriginals={props.isPoster}
-          trailerData={trailerData}
+          // trailerData={trailerData}
+          idTrailer={idTrailer}
         />
       )}
     </React.Fragment>

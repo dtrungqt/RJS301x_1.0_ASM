@@ -204,16 +204,30 @@ code {
 /*-------------------------------------------------------------------------------------------------*/
 /*-------------------------------------------------------------------------------------------------*/
 .movieDetail-container {
-  /* margin: 2rem; */
+  width: 100%;
+  padding-left: 5rem;
+  padding-right: 5rem;
 }
-
 .movieTrailer-backdrop {
   width: 100%;
   height: 100%;
 }
-/* CSS cho movieInfo  */
-/*------------------------------------------------------------*/
 
+.movieInfo-container {
+  color: white;
+}
+
+.movieInfo-overview {
+  font-size: 0.9rem;
+  text-align: justify;
+}
+
+.movieInfo-container .white-line {
+  background-color: #fff;
+  border: none;
+  height: 1.5px;
+  opacity: 1;
+}
 /*-------------------------------------------------------------------------------------------------*/
 /*-------------------------------------------------------------------------------------------------*/
 
