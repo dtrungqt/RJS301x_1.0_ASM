@@ -287,3 +287,74 @@ code {
 }
 /*-------------------------------------------------------------------------------------------------*/
 /*-------------------------------------------------------------------------------------------------*/
+
+/* CSS cho SearchForm  */
+/*-------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------*/
+
+.searchForm-container {
+  background-color: #000;
+  height: 50vh;
+}
+
+.searchForm-form {
+  background-color: #fff;
+  width: 60%;
+  height: 10rem;
+}
+
+.searchForm-input {
+  width: 80%;
+  border: none;
+  height: 3rem;
+  padding-left: 3vw;
+  font-size: 1.3rem;
+}
+.search-icon {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  color: rgb(204, 204, 204);
+}
+
+.searchForm-line {
+  opacity: 1;
+  border: none;
+  height: 3px;
+  background-color: #0dcaf0;
+}
+
+.button-container .button {
+  border: none;
+  background-color: #fff;
+  font-weight: 500;
+  width: 7rem;
+  padding: 0.4rem 0rem;
+  /* padding: 0.4rem 1.2rem; */
+}
+
+.search-btn.button {
+  background-color: #0dcaf0;
+  color: white;
+  margin-right: 2rem;
+  border: none;
+}
+
+.reset-btn.button {
+  color: #555;
+}
+/*-------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------*/
+
+/* CSS cho SearchResult  */
+/*-------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------------------------*/
+.resultList-container {
+  background-color: #000;
+}
+
+.resultList-title {
+  color: white;
+  margin-left: 1.5rem;
+  font-size: 1.6rem;
+}
