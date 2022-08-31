@@ -12,6 +12,7 @@ const MovieList = (props) => {
         error={props.errorOriginal}
         isTitle={false}
         isPoster={true} //true: hiển thị ảnh film dưới dạng poster
+        isScroll={true} //true: hiển thị danh sách theo kiểu scroll ngang
       />
 
       <MovieItem
@@ -20,6 +21,7 @@ const MovieList = (props) => {
         error={props.errorTrending}
         isTitle={"Xu hướng"}
         isPoster={false} //false: hiển thị ảnh film dưới dạng backdrop
+        isScroll={true}
       />
 
       <MovieItem
@@ -28,6 +30,7 @@ const MovieList = (props) => {
         error={props.errorTopRated}
         isTitle={"Xếp hạng cao"}
         isPoster={false} //false: hiển thị ảnh film dưới dạng backdrop
+        isScroll={true}
       />
 
       <MovieItem
@@ -36,6 +39,7 @@ const MovieList = (props) => {
         error={props.errorAction}
         isTitle={"Hành động"}
         isPoster={false} //false: hiển thị ảnh film dưới dạng backdrop
+        isScroll={true}
       />
 
       <MovieItem
@@ -44,6 +48,7 @@ const MovieList = (props) => {
         error={props.errorComedy}
         isTitle={"Hài"}
         isPoster={false} //false: hiển thị ảnh film dưới dạng backdrop
+        isScroll={true}
       />
 
       <MovieItem
@@ -52,6 +57,7 @@ const MovieList = (props) => {
         error={props.errorHorror}
         isTitle={"Kinh dị"}
         isPoster={false} //false: hiển thị ảnh film dưới dạng backdrop
+        isScroll={true}
       />
 
       <MovieItem
@@ -60,6 +66,7 @@ const MovieList = (props) => {
         error={props.errorRomance}
         isTitle={"Lãng mạn"}
         isPoster={false} //false: hiển thị ảnh film dưới dạng backdrop
+        isScroll={true}
       />
 
       <MovieItem
@@ -68,6 +75,7 @@ const MovieList = (props) => {
         error={props.errorDocumentaries}
         isTitle={"Tài liệu"}
         isPoster={false} //false: hiển thị ảnh film dưới dạng backdrop
+        isScroll={true}
       />
     </div>
   );

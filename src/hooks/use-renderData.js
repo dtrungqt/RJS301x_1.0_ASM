@@ -1,7 +1,7 @@
 import React from "react";
 
 const useRenderDataHook = (renderDataFn, data, loading, error) => {
-  let moviesData = <p>Found no movies.</p>;
+  let moviesData = <p className="text-danger">Found no movies.</p>;
 
   if (data.length > 0) {
     moviesData = renderDataFn(data);

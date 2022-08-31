@@ -144,11 +144,16 @@ code {
 
 /* CSS cho movieItem  */
 /*------------------------------------------------------------*/
-.movieItem-container {
+.movieItem-scroll-container {
   /* hiển thị theo chiều ngang */
   overflow: auto;
   white-space: nowrap;
   margin: 0px 3rem;
+}
+
+.movieItem-box-container {
+  padding-left: 2rem;
+  /* background-color: #000; */
 }
 
 /* css thanh scrollbar  */
@@ -310,6 +315,10 @@ code {
   padding-left: 3vw;
   font-size: 1.3rem;
 }
+
+.searchForm-input:focus {
+  outline: none;
+}
 .search-icon {
   width: 30px;
   height: 30px;
@@ -340,8 +349,15 @@ code {
   border: none;
 }
 
+.search-btn.button:hover {
+  background-color: #0098cf;
+}
 .reset-btn.button {
   color: #555;
+}
+
+.reset-btn.button:hover {
+  background-color: rgb(221, 221, 221);
 }
 /*-------------------------------------------------------------------------------------------------*/
 /*-------------------------------------------------------------------------------------------------*/
@@ -349,8 +365,9 @@ code {
 /* CSS cho SearchResult  */
 /*-------------------------------------------------------------------------------------------------*/
 /*-------------------------------------------------------------------------------------------------*/
-.resultList-container {
+.searchPage-container {
   background-color: #000;
+  min-height: 100vh;
 }
 
 .resultList-title {

@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import YouTube from "react-youtube";
-//
 import useHttpHook from "../../hooks/use-http";
 
 const MovieDetail = (props) => {
-  // const [videoData,setVideoData]=useState([])
   console.log(props.movieData);
   console.log(props.trailerData);
-  //
   const [trailerData, setTrailerData] = useState([]);
-  const { isLoading, error, sendRequest: fetchTrailerData } = useHttpHook();
+  const { error, sendRequest: fetchTrailerData } = useHttpHook();
 
   const apiLink = `https://api.themoviedb.org/3/movie/${props.idTrailer}/videos?api_key=a211d22bb5d4917ee91235c99b23e6aa`;
 
@@ -27,14 +24,19 @@ const MovieDetail = (props) => {
   const movieInfo = (
     <div className="movieInfo-container col-12 col-md-6">
       <h2 className="movieInfo-name">
-        {props.isOriginals ? props.movieData[0].name : props.movieData[0].title}
+        {props.isOriginals
+          ? props.movieData[0].name
+          : props.movieData[0].title || props.movieData[0].name}
+        {/* Ở giá trị khi props.isOriginals là false, ta đặt 1 phép Or 2 giá trị vì một số ít movie ở mục Trending (movie vừa là trending, vừa là originals) có data trả về khác với các data còn lại*/}
       </h2>
       <hr className="white-line" />
       <h6 className="movieInfo-releaseDate mb-0">
-        Release Data:{" "}
+        Release Date:{" "}
         {props.isOriginals
           ? props.movieData[0].first_air_date
-          : props.movieData[0].release_date}
+          : props.movieData[0].release_date ||
+            props.movieData[0].first_air_date}
+        {/* Ở giá trị khi props.isOriginals là false, ta đặt 1 phép Or 2 giá trị vì một số ít movie ở mục Trending (vừa là trending, vừa là originals) có data trả về khác với các data còn lại*/}
       </h6>
       <h6 className="movieInfo-vote">
         Vote: {props.movieData[0].vote_average}/10
@@ -51,13 +53,9 @@ const MovieDetail = (props) => {
     },
   };
   let displayTrailer = false;
-  // if (props.trailerData)
-  // const videoData = props.trailerData[0] || [];
-  // let videoData = props.trailerData;
   let videoData = trailerData;
   if (videoData.length > 0) {
     videoData = videoData[0];
-    // console.log("1");
     if (
       videoData.site.toLowerCase() === "youtube" &&
       (videoData.type.toLowerCase() === "trailer" ||
@@ -71,7 +69,10 @@ const MovieDetail = (props) => {
 
   const movieBackdrop = (
     <img
-      src={`https://image.tmdb.org/t/p/original${props.movieData[0].backdrop_path}`}
+      src={`https://image.tmdb.org/t/p/original${
+        props.movieData[0].backdrop_path || props.movieData[0].poster_path
+      }`}
+      // dùng phép or ở kết quả tham chiếu trong src vì 1 số ít data movie có backdrop_path = null => dùng poster_path thay thế
       alt={
         props.isOriginals ? props.movieData[0].name : props.movieData[0].title
       }
@@ -85,15 +86,35 @@ const MovieDetail = (props) => {
         <YouTube className="" videoId={videoData.key} opts={opts} />
       )}
       {(!displayTrailer || error) && movieBackdrop}
-      {/* {error && <p className="text-white">{error}</p>} */}
+      {/* nếu load video gặp error thì hiển thị ảnh backdrop  */}
     </div>
   );
 
+  //Scroll tới MovieDetail bằng useRef và useEffect: CHỈ ÁP DỤNG Ở Search Component. Vì nếu dùng ở Browser, Navbar sẽ che mất title của film
+  const myRef = useRef(null);
+  useEffect(() => {
+    const executeScroll = () => myRef.current.scrollIntoView();
+
+    //chỉ thực thi hàm với props.isScroll= false, vì chỉ ở Search Component thì isSCroll = false
+    if (!props.isScroll) executeScroll();
+  }, [props.movieData, props.isScroll]);
+
   return (
-    <div className="movieDetail-container row">
-      {movieInfo}
-      {movieTrailer}
-    </div>
+    <React.Fragment>
+      {props.isScroll && (
+        <div className="movieDetail-container row">
+          {movieInfo}
+          {movieTrailer}
+        </div>
+      )}
+      {!props.isScroll && (
+        <div className="movieDetail-container row pb-5" ref={myRef}>
+          {movieInfo}
+          {movieTrailer}
+        </div>
+      )}
+      ;
+    </React.Fragment>
   );
 };
 
