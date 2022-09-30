@@ -30,10 +30,15 @@ const TrendingProducts = () => {
 
   const dispatch = useDispatch();
   const popupIsOpen = useSelector((state) => state.popupIsOpen);
+  const detailProduct = useSelector((state) => state.detailProduct);
 
-  const openDetailModalHandler = () => {
-    // setPopupIsOpen((prevState) => !prevState);
-    dispatch(popupActions.showPopup());
+  const openDetailModalHandler = (event) => {
+    const [selectedProduct] = productsData.filter(
+      (product) => product._id.$oid === event.target.dataset.productId
+    );
+    dispatch(popupActions.showPopup(selectedProduct));
+    // console.log(event.target.dataset.productId);
+    console.log(selectedProduct);
   };
 
   //render danh sách các sản phẩm
@@ -46,6 +51,8 @@ const TrendingProducts = () => {
           alt={product.name}
           width="100%"
           height="100%"
+          data-product-id={product._id.$oid}
+          // data-product-id dùng để tạo 1 đối tượng có thuộc tính productId trong thuộc tính dataset của target
           onClick={openDetailModalHandler}
         />
         <div className="product-info card-body">
@@ -79,7 +86,10 @@ const TrendingProducts = () => {
         )}
 
       {popupIsOpen &&
-        ReactDOM.createPortal(<Popup />, document.getElementById("popup-root"))}
+        ReactDOM.createPortal(
+          <Popup detailProduct={detailProduct} />,
+          document.getElementById("popup-root")
+        )}
     </React.Fragment>
   );
 };
