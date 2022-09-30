@@ -30,9 +30,8 @@ const TrendingProducts = () => {
 
   const dispatch = useDispatch();
   const popupIsOpen = useSelector((state) => state.popupIsOpen);
-  const detailProduct = useSelector((state) => state.detailProduct);
 
-  const openDetailModalHandler = (event) => {
+  const openDetailPopupHandler = (event) => {
     const [selectedProduct] = productsData.filter(
       (product) => product._id.$oid === event.target.dataset.productId
     );
@@ -53,7 +52,7 @@ const TrendingProducts = () => {
           height="100%"
           data-product-id={product._id.$oid}
           // data-product-id dùng để tạo 1 đối tượng có thuộc tính productId trong thuộc tính dataset của target
-          onClick={openDetailModalHandler}
+          onClick={openDetailPopupHandler}
         />
         <div className="product-info card-body">
           <h5>{product.name}</h5>
@@ -61,6 +60,7 @@ const TrendingProducts = () => {
             {`${product.price
               .toString()
               .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")} VND`}
+
             {/* .toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") dùng để biến đổi 1 số thành 1 string có dấu . phân cách giữa các đơn vị. Ví dụ 1000 -> 1.000
             Link:https://blog.abelotech.com/posts/number-currency-formatting-javascript/  */}
           </h6>
@@ -86,10 +86,7 @@ const TrendingProducts = () => {
         )}
 
       {popupIsOpen &&
-        ReactDOM.createPortal(
-          <Popup detailProduct={detailProduct} />,
-          document.getElementById("popup-root")
-        )}
+        ReactDOM.createPortal(<Popup />, document.getElementById("popup-root"))}
     </React.Fragment>
   );
 };

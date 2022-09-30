@@ -35,3 +35,8 @@ function App() {
 }
 
 export default App;
+
+/*
+Việc chưa hoàn thành:
+1. Xử lý responsive cho Popup.js
+*/
