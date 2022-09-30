@@ -1,13 +1,241 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+* {
+  font-style: italic;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html,
+body {
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+  cursor: default;
+}
+
+.card {
+  text-align: center;
+  max-width: 80vw;
+  margin: auto;
+  border: none;
+}
+
+h1 {
+  font-weight: 600;
+}
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1rem;
+  color: rgb(103, 103, 103);
+}
+
+h5 {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+h6 {
+  font-size: 0.85rem;
+  color: rgb(103, 103, 103);
+}
+
+.link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #fff;
+}
+/* CSS CHO NavBar */
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.navbar-container {
+  height: 10vh;
+  /* font-style: italic; */
+  font-weight: 600;
+}
+.navbar-container ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.navbar-container li {
+  float: left;
+}
+
+.navlink {
+  display: block;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: #333;
+}
+
+.navlink:hover {
+  color: rgb(233, 188, 103);
+  cursor: pointer;
+}
+
+.active.navlink {
+  color: rgba(224, 146, 0, 0.963);
+}
+
+.navbar-container .brand-name {
+  font-size: 1.6rem;
+}
+
+/* CSS CHO Footer  */
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.footer-container {
+  font-size: 0.8rem;
+  background-color: #111;
+  margin-top: 1rem;
+}
+
+.list-item {
+  max-width: 80vw;
+  margin: auto;
+  padding: 3rem 0;
+  color: #fff;
+}
+
+.list-item ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.item-link {
+  text-decoration: none;
+  color: #555;
+}
+
+/* .list-item h3 {
+  font-size: 1.2rem;
+} */
+.navlink {
+  display: block;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: #333;
+}
+
+/* CSS CHO Banner  */
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.banner-container {
+  width: 100%;
+  height: 50vh;
+  background-image: url("../public/images/banner1.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+  top: 0%;
+  left: 0%;
+}
+
+.banner-info {
+  width: 50%;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  text-align: left;
+}
+
+.banner-info button {
+  border: none;
+  padding: 8px 30px;
+  background-color: rgb(71, 69, 69);
+  color: #fff;
+}
+
+.banner-info button:hover {
+  /* cursor: pointer; */
+  background-color: rgb(31, 31, 31);
+}
+
+/* CSS CHO Collections  */
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.collections-container {
+  margin-top: 4rem;
+}
+
+.collections-title h2 {
+  font-weight: 600;
+}
+
+.link-cursor:hover {
+  cursor: default;
+}
+
+.collections-container img:hover {
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+/* CSS CHO TrendingProducts  */
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.trending-container {
+  margin-top: 4rem;
+}
+
+.trending-title {
+  text-align: left;
+}
+
+.img-product:hover {
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+/* CSS CHO OtherInfo  */
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.other-container {
+  margin-top: 2rem;
+}
+
+.promotion-container {
+  padding: 8vh 0;
+  background-color: rgb(245, 245, 245);
+}
+
+.promotion-container h6 {
+  margin-bottom: 0;
+}
+
+.email-container {
+  margin: 3rem 0;
+  text-align: left;
+}
+
+.input-container {
+  min-width: 40vw;
+}
+
+.input-container input {
+  /* min-width: 10vw; */
+  height: 3rem;
+  border: solid 1px rgb(202, 202, 202);
+  font-size: 0.9rem;
+  padding-left: 1rem;
+}
+
+.input-container button {
+  height: 3rem;
+  /* min-width: 7rem; */
+  border: none;
+  background-color: rgb(71, 69, 69);
+  color: #fff;
+}
+
+.input-container button:hover {
+  background-color: rgb(31, 31, 31);
 }
