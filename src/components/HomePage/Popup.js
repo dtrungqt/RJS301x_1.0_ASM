@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { popupActions } from "../../store";
 
 const Popup = () => {
-  const detailProduct = useSelector((state) => state.detailProduct);
+  const detailProduct = useSelector((state) => state.popup.detailProduct);
   const dispatch = useDispatch();
   const closeDetailPopupHandler = () => {
     dispatch(popupActions.hidePopup());

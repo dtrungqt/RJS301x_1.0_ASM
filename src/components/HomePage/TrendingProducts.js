@@ -6,13 +6,12 @@ import { popupActions } from "../../store/index";
 import useHttp from "../../hooks/use-http";
 import Backdrop from "./Backdrop";
 import Popup from "./Popup";
+import ProductItem from "../UI/ProductItem";
 
 const TrendingProducts = () => {
   const [productsData, setProductsData] = useState([]);
 
   const { sendRequest: fetchProductsData } = useHttp();
-
-  // const [popupIsOpen, setPopupIsOpen] = useState(false);
 
   useEffect(() => {
     const transformDataFn = (data) => {
@@ -26,10 +25,11 @@ const TrendingProducts = () => {
       transformDataFn
     );
   }, [fetchProductsData]);
+
   console.log(productsData);
 
   const dispatch = useDispatch();
-  const popupIsOpen = useSelector((state) => state.popupIsOpen);
+  const popupIsOpen = useSelector((state) => state.popup.popupIsOpen);
 
   const openDetailPopupHandler = (event) => {
     const [selectedProduct] = productsData.filter(
@@ -37,35 +37,17 @@ const TrendingProducts = () => {
     );
     dispatch(popupActions.showPopup(selectedProduct));
     // console.log(event.target.dataset.productId);
-    console.log(selectedProduct);
+    // console.log(selectedProduct);
   };
 
   //render danh sách các sản phẩm
   const allProducts = productsData.map((product) => {
     return (
-      <div className="card col-12 col-sm-3 mt-3" key={product._id.$oid}>
-        <img
-          className="img-product card-img-top"
-          src={product.img1}
-          alt={product.name}
-          width="100%"
-          height="100%"
-          data-product-id={product._id.$oid}
-          // data-product-id dùng để tạo 1 đối tượng có thuộc tính productId trong thuộc tính dataset của target
-          onClick={openDetailPopupHandler}
-        />
-        <div className="product-info card-body">
-          <h5>{product.name}</h5>
-          <h6>
-            {`${product.price
-              .toString()
-              .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")} VND`}
-
-            {/* .toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") dùng để biến đổi 1 số thành 1 string có dấu . phân cách giữa các đơn vị. Ví dụ 1000 -> 1.000
-            Link:https://blog.abelotech.com/posts/number-currency-formatting-javascript/  */}
-          </h6>
-        </div>
-      </div>
+      <ProductItem
+        key={product._id.$oid}
+        productData={product}
+        onFunctionHandler={openDetailPopupHandler}
+      />
     );
   });
 

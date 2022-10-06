@@ -1,10 +1,15 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { act } from "react-dom/test-utils";
 
-const initialState = { popupIsOpen: false, detailProduct: [] };
+const initialPopupState = {
+  popupIsOpen: false,
+  detailProduct: [],
+};
+const initialProductItemState = { product: [] };
 
 const popupSlice = createSlice({
   name: "popup",
-  initialState: initialState,
+  initialState: initialPopupState,
   reducers: {
     showPopup(state, action) {
       state.popupIsOpen = true;
@@ -16,9 +21,20 @@ const popupSlice = createSlice({
   },
 });
 
+const productItemSlice = createSlice({
+  name: "productItem",
+  initialState: initialProductItemState,
+  reducers: {
+    selectProductItem(state, action) {
+      state.product = action.payload;
+    },
+  },
+});
+
 const store = configureStore({
-  reducer: popupSlice.reducer,
+  reducer: { popup: popupSlice.reducer, productItem: productItemSlice.reducer },
 });
 
 export default store;
 export const popupActions = popupSlice.actions;
+export const selectProductItemActions = productItemSlice.actions;

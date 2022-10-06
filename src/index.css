@@ -201,11 +201,71 @@ p {
   text-align: left;
 }
 
+/* CSS CHO ProductItem  */
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.animations {
+  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 2s; /* Firefox < 16 */
+  -ms-animation: fadein 2s; /* Internet Explorer */
+  -o-animation: fadein 2s; /* Opera < 12.1 */
+  animation: fadein 2s;
+}
+
 .img-product:hover {
   cursor: pointer;
   opacity: 0.75;
 }
 
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 /* CSS CHO OtherInfo  */
 /*////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -283,7 +343,12 @@ p {
   min-width: 80%;
   /* height: 90%; */
   overflow: none;
+  /* overflow-y: auto; */
 }
+
+/* .content-container p {
+  overflow-y: auto;
+} */
 
 .img-detail {
   width: 100%;
@@ -311,4 +376,101 @@ p {
   padding: 8vh 0;
   background-color: rgb(245, 245, 245);
   margin-bottom: 2.5rem;
+}
+
+/* CSS CHO ProductList  */
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.productlist-container {
+  text-align: left;
+}
+
+.categories-title ul {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+  /* text-align: left; */
+}
+
+.categories-title h3,
+li {
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  margin: 0;
+}
+.categories-title li {
+  background-color: rgb(250, 250, 250);
+}
+.categories-title li:first-child {
+  padding-top: 1.3rem;
+}
+
+.categories-title li:hover {
+  color: rgba(224, 146, 0, 0.963);
+}
+.categories-title h3 {
+  background-color: rgb(221, 221, 221);
+}
+
+.categories-title h3:first-child {
+  color: #fff;
+  background-color: #111;
+}
+
+.products-container input {
+  height: 3rem;
+  width: 15rem;
+  border: solid 1px rgb(202, 202, 202);
+  font-size: 0.9rem;
+  padding-left: 1rem;
+}
+
+.products-container select {
+  height: 2rem;
+}
+/* CSS CHO Detail Page  */
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.detailpage-container {
+  text-align: left;
+}
+
+.detailpage-container img {
+  margin: auto;
+  padding-bottom: 0.3rem;
+}
+
+.list {
+  max-width: 15rem;
+  max-height: 25rem;
+}
+
+.maindetail-container span {
+  color: rgb(103, 103, 103);
+}
+
+.add-container input {
+  width: 3rem;
+  border: none;
+  font-weight: 600;
+}
+
+.add-container h5 {
+  color: rgb(103, 103, 103);
+}
+.quanity {
+  padding: 0.4rem 1rem;
+  border: solid 1px rgb(192, 192, 192);
+  width: 100%;
+}
+.add-container button {
+  border: none;
+  padding: 8px 30px;
+  background-color: rgb(71, 69, 69);
+  color: #fff;
+  width: 100%;
+}
+
+.add-container button:hover {
+  /* cursor: pointer; */
+  background-color: rgb(31, 31, 31);
 }
