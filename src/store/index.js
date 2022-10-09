@@ -1,11 +1,11 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
 
 const initialPopupState = {
   popupIsOpen: false,
   detailProduct: [],
 };
-const initialProductItemState = { product: [] };
+// const initialProductItemState = { product: [] };
+const initialLoginState = { isLogin: false };
 
 const popupSlice = createSlice({
   name: "popup",
@@ -21,20 +21,35 @@ const popupSlice = createSlice({
   },
 });
 
-const productItemSlice = createSlice({
-  name: "productItem",
-  initialState: initialProductItemState,
+const loginSlice = createSlice({
+  name: "login",
+  initialState: initialLoginState,
   reducers: {
-    selectProductItem(state, action) {
-      state.product = action.payload;
+    onLogin(state) {
+      state.isLogin = true;
+    },
+    onLogout(state) {
+      state.isLogin = false;
     },
   },
 });
-
+// const productItemSlice = createSlice({
+//   name: "productItem",
+//   initialState: initialProductItemState,
+//   reducers: {
+//     selectProductItem(state, action) {
+//       state.product = action.payload;
+//     },
+//   },
+// });
 const store = configureStore({
-  reducer: { popup: popupSlice.reducer, productItem: productItemSlice.reducer },
+  reducer: { popup: popupSlice.reducer, loginStatus: loginSlice.reducer },
 });
+// const store = configureStore({
+//   reducer: { popup: popupSlice.reducer, productItem: productItemSlice.reducer },
+// });
 
 export default store;
 export const popupActions = popupSlice.actions;
-export const selectProductItemActions = productItemSlice.actions;
+export const loginStatusActions = loginSlice.actions;
+// export const selectProductItemActions = productItemSlice.actions;

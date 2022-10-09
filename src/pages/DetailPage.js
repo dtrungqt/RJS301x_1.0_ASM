@@ -111,7 +111,7 @@ const DetailPage = () => {
             <div className="add-container d-sm-flex justify-center-content">
               <div className="quanity d-flex justify-center-content">
                 <h5 className="m-0 me-2 align-self-center">QUANITY</h5>
-                <input type="number" />
+                <input type="number" min={0} />
               </div>
               <button type="button">Add to cart</button>
             </div>

@@ -168,6 +168,7 @@ p {
 .banner-info button:hover {
   /* cursor: pointer; */
   background-color: rgb(31, 31, 31);
+  font-weight: 600;
 }
 
 /* CSS CHO Collections  */
@@ -309,6 +310,7 @@ p {
 
 .input-container button:hover {
   background-color: rgb(31, 31, 31);
+  font-weight: 600;
 }
 
 /* CSS CHO Backdrop  */
@@ -367,6 +369,7 @@ p {
 
 .content-container button:hover {
   background-color: rgb(31, 31, 31);
+  font-weight: 600;
 }
 
 /* CSS CHO ShopPage  */
@@ -473,4 +476,125 @@ li {
 .add-container button:hover {
   /* cursor: pointer; */
   background-color: rgb(31, 31, 31);
+  font-weight: 600;
+}
+
+.description-container pre {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9rem;
+  overflow: hidden;
+  white-space: pre-wrap;
+  line-height: 1rem;
+  /* width: 100%; */
+}
+
+/* CSS CHO Login va Register  */
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.loginpage-container {
+  width: 100%;
+  height: 105vh;
+  background-image: url("../public/images/banner1.jpg");
+  background-repeat: no-repeat;
+  background-size: 100vw 100%;
+  color: rgb(103, 103, 103);
+}
+
+.signup-container {
+  width: 50%;
+  height: 90%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-group {
+  text-align: left;
+  border: solid 1px rgb(192, 192, 192);
+  border-bottom: none;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  padding: 1rem 1rem;
+}
+
+.form-group.last-group {
+  border-bottom: solid 1px rgb(192, 192, 192);
+}
+
+.form-group input {
+  border: none;
+}
+
+.form-group label {
+  font-weight: 600;
+}
+.button-container {
+  margin: 0 2rem;
+}
+.form-inner button:disabled {
+  background-color: rgb(180, 180, 180);
+  color: rgb(80, 80, 80);
+  font-weight: 500;
+}
+.form-inner button {
+  /* cursor: pointer; */
+  background-color: rgb(31, 31, 31);
+  color: #fff;
+  font-weight: 600;
+}
+
+.click-link {
+  text-decoration: none;
+}
+
+.invalid input {
+  border: 1px solid #b40e0e;
+  background-color: #fddddd;
+}
+
+.invalid input:focus {
+  border-color: #ff8800;
+  background-color: #fbe8d2;
+}
+
+.text-error {
+  color: rgb(170, 14, 14);
+}
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/* RESPONSIVE TOÀN TRANG WEB  */
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+@media screen and (max-width: 1050px) {
+  .signup-container {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .card {
+    max-width: 100%;
+  }
+
+  .loginpage-container {
+    background-image: none;
+  }
+
+  .signup-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .form-group {
+    border: none;
+    padding: 0.5rem;
+  }
+  .form-group input {
+    border: solid 1px #555;
+  }
+  .form-group.last-group {
+    border-bottom: none;
+  }
 }
