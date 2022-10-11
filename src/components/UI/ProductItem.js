@@ -1,6 +1,7 @@
 /*
 props.col3=true - Hiển thị 3 item/1 màn hình rộng
-props.col3=false - Hiển thị 4 item/1 màn hình rộng 
+props.col3=false - Hiển thị 4 item/1 màn hình rộng
+props.list =true - Hiển thị items theo danh sách ngang 
 props.productData - Obj chứa data của product
 props.onFunctionHandler - Hàm thực thi khi click vào Img 
 props.animation=true - Hiển thị animation fade in khi phần tử được hiển thị
@@ -11,8 +12,8 @@ const ProductItem = (props) => {
   return (
     <div
       className={`card ${props.animation ? "animations" : ""} mt-3 ${
-        props.list ? "list float-sm-start" : ""
-      } ${props.col3 ? "col-12 col-sm-4" : "col-12 col-sm-3"}`}
+        props.col3 ? "col-12 col-sm-4" : "col-12 col-sm-3"
+      }  ${props.list ? "list float-sm-start" : ""}`}
     >
       <img
         className="img-product card-img-top"

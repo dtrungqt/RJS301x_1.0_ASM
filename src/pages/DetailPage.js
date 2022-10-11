@@ -1,16 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import ProductItem from "../components/UI/ProductItem";
+import { useDispatch, useSelector } from "react-redux";
+import { addListCartActions } from "../store";
 
+import ProductItem from "../components/UI/ProductItem";
 import useHttp from "../hooks/use-http";
 
 const DetailPage = () => {
   const [productDetailData, setProductDetailData] = useState([]);
   const [relatedProductData, setRelatedProductData] = useState([]);
+  const [hasError, setHasError] = useState(false);
+
   const params = useParams();
   const productId = params.productId;
+
+  const inputRef = useRef();
+
   const { sendRequest: fetchProductDetailData } = useHttp();
+
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const transformDataFn = (data) => {
@@ -42,6 +52,46 @@ const DetailPage = () => {
     window.scrollTo(0, 0);
     const productId = event.target.dataset.productId;
     navigate(`/shop/${productId}`);
+  };
+
+  // const data = useSelector((state) => state.listCart.products);
+  // console.log(data);
+  const addCartHandler = () => {
+    //validate
+    const quanity = inputRef.current.value;
+    if (!quanity) {
+      setHasError(true);
+      return;
+    }
+
+    //lấy listCart từ localStorage
+    let listCart = [];
+    const storedListCart = localStorage.getItem("listCart");
+    if (storedListCart) {
+      listCart = JSON.parse(storedListCart);
+    }
+    console.log(listCart);
+
+    const product = {
+      id: productDetailData._id.$oid,
+      name: productDetailData.name,
+      price: productDetailData.price,
+      quanity: quanity,
+      img: productDetailData.img1,
+    };
+
+    //Nếu quanity=0 thì bỏ qua
+    if (Number(quanity) === 0) return;
+
+    //lưu listCart vào store redux
+    dispatch(addListCartActions.addCart(product));
+
+    //lưu listCart vào localstorate
+    listCart.push(product);
+    localStorage.setItem("listCart", JSON.stringify(listCart));
+
+    // console.log(product);
+    console.log(listCart);
   };
 
   if (productDetailData.category) {
@@ -111,10 +161,13 @@ const DetailPage = () => {
             <div className="add-container d-sm-flex justify-center-content">
               <div className="quanity d-flex justify-center-content">
                 <h5 className="m-0 me-2 align-self-center">QUANITY</h5>
-                <input type="number" min={0} />
+                <input type="number" min={0} ref={inputRef} />
               </div>
-              <button type="button">Add to cart</button>
+              <button type="button" onClick={addCartHandler}>
+                Add to cart
+              </button>
             </div>
+            {hasError && <p className="text-error">Please entered Quanity.</p>}
           </div>
         </div>
 

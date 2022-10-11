@@ -53,7 +53,7 @@ const LoginPage = () => {
         currentUser = { ...currentUser, isLogin: true };
         currentUser = JSON.stringify(currentUser);
         // console.log(currentUser);
-        localStorage.setItem("loginStatus", currentUser);
+        localStorage.setItem("loginData", currentUser);
         alert("Successful Login!");
         navigate("/");
         return;

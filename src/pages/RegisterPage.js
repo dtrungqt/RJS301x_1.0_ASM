@@ -1,6 +1,8 @@
 // import { useState, useRef } from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import useInput from "./../hooks/use-input";
 
 const isNotEmpty = (value) => value.trim() !== "";
@@ -8,6 +10,7 @@ const isEmail = (value) => value.includes("@");
 const isPassword = (value) => value.length > 8;
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
   const [duplicateEmailError, setDuplicateEmailError] = useState(false);
 
   const {
@@ -91,6 +94,9 @@ const RegisterPage = () => {
     resetEmailInput();
     resetPasswordInput();
     resetPhoneInput();
+
+    alert("Sign Up Success!");
+    navigate("/login");
   };
 
   return (

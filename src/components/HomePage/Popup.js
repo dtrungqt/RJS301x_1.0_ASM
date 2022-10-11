@@ -38,8 +38,7 @@ const Popup = () => {
               .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")} VND`}</h4>
             <p>{detailProduct.short_desc}</p>
             <button type="button">
-              <Link className="link">
-                {" "}
+              <Link className="link" to={`/shop/${detailProduct._id.$oid}`}>
                 <FaShoppingCart />
                 View Detail
               </Link>

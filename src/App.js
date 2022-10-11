@@ -37,5 +37,9 @@ export default App;
 
 /*
 Việc chưa hoàn thành:
-1. Xử lý responsive cho Popup.js
+1. Lưu sản phẩm được thêm vào giỏ hàng theo tài khoản tương ứng => khi mỗi tài khoản login thì sẽ có 1 giỏ hàng khác nhau
+HIỆN TẠI: LOGOUT LÀ SẼ XÓA HẾT DATA CỦA CART
+=> VỀ SAU CÓ THGIAN THÌ SẼ LÀM CHỨC NĂNG LƯU CART THEO TỪNG LOGIN USER
+2. Bug: Mỗi sản phẩm chỉ được thêm vào giỏ hàng 1 lần. Nếu thêm 1 sp 2 lần trở đi thì sẽ bị lỗi trùng key
+=> Khi thêm (add to Cart) lại 1 sp thì sẽ cộng dồn quantity lên
 */

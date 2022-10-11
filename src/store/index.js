@@ -4,8 +4,10 @@ const initialPopupState = {
   popupIsOpen: false,
   detailProduct: [],
 };
-// const initialProductItemState = { product: [] };
+
 const initialLoginState = { isLogin: false };
+
+const initialListCartState = { products: [] };
 
 const popupSlice = createSlice({
   name: "popup",
@@ -33,23 +35,43 @@ const loginSlice = createSlice({
     },
   },
 });
-// const productItemSlice = createSlice({
-//   name: "productItem",
-//   initialState: initialProductItemState,
-//   reducers: {
-//     selectProductItem(state, action) {
-//       state.product = action.payload;
-//     },
-//   },
-// });
-const store = configureStore({
-  reducer: { popup: popupSlice.reducer, loginStatus: loginSlice.reducer },
+
+const listCartSlice = createSlice({
+  name: "listCart",
+  initialState: initialListCartState,
+  reducers: {
+    addCart(state, action) {
+      state.products.push(action.payload);
+    },
+    updateCart(state, action) {
+      state.products = action.payload;
+    },
+    deleteCart(state, action) {
+      const itemDeleteID = action.payload;
+      let itemDeleteIndex;
+      const itemDelete = state.products.find((data, index) => {
+        itemDeleteIndex = index;
+        return data.id === itemDeleteID;
+      });
+      state.products.splice(itemDeleteIndex, 1);
+
+      //cập nhật listCart trong localStorage
+      const updatedListCart = state.products;
+      const transformListCart = JSON.stringify(updatedListCart);
+      localStorage.setItem("listCart", transformListCart);
+    },
+  },
 });
-// const store = configureStore({
-//   reducer: { popup: popupSlice.reducer, productItem: productItemSlice.reducer },
-// });
+
+const store = configureStore({
+  reducer: {
+    popup: popupSlice.reducer,
+    loginStatus: loginSlice.reducer,
+    listCart: listCartSlice.reducer,
+  },
+});
 
 export default store;
 export const popupActions = popupSlice.actions;
 export const loginStatusActions = loginSlice.actions;
-// export const selectProductItemActions = productItemSlice.actions;
+export const addListCartActions = listCartSlice.actions;
