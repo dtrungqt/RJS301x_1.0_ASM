@@ -16,12 +16,6 @@ const CartPage = () => {
   const navigate = useNavigate();
   const listCart = useSelector((state) => state.listCart.products);
   useEffect(() => {
-    //kiểm tra hiện tại có tài khoản nào đăng nhập hay không - Nếu không thì chuyển hướng sang trang Login
-    const loginStatus = localStorage.getItem("loginData");
-    if (!loginStatus) {
-      navigate("/login");
-    }
-
     const storedListCart = localStorage.getItem("listCart");
     if (storedListCart) {
       const transformStoredListCart = JSON.parse(storedListCart);

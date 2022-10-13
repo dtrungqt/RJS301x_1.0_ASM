@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addListCartActions } from "../store";
+import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 
 import ProductItem from "../components/UI/ProductItem";
 import useHttp from "../hooks/use-http";
@@ -9,17 +10,12 @@ import useHttp from "../hooks/use-http";
 const DetailPage = () => {
   const [productDetailData, setProductDetailData] = useState([]);
   const [relatedProductData, setRelatedProductData] = useState([]);
-  const [hasError, setHasError] = useState(false);
+  const [number, setNumber] = useState(1);
 
   const params = useParams();
   const productId = params.productId;
-
-  const inputRef = useRef();
-
   const { sendRequest: fetchProductDetailData } = useHttp();
-
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -56,13 +52,17 @@ const DetailPage = () => {
 
   // const data = useSelector((state) => state.listCart.products);
   // console.log(data);
+
+  const increaseQuantityHandler = (event) => {
+    if (number < 10) setNumber((prevNumber) => prevNumber + 1);
+  };
+
+  const decreaseQuantityHandler = () => {
+    if (number > 1) setNumber((prevNumber) => prevNumber - 1);
+  };
+
   const addCartHandler = () => {
-    //validate
-    const quantity = inputRef.current.value;
-    if (!quantity) {
-      setHasError(true);
-      return;
-    }
+    const quantity = number;
 
     //lấy listCart từ localStorage
     let listCart = [];
@@ -76,12 +76,9 @@ const DetailPage = () => {
       id: productDetailData._id.$oid,
       name: productDetailData.name,
       price: productDetailData.price,
-      quantity: Number(quantity),
+      quantity: quantity,
       img: productDetailData.img1,
     };
-
-    //Nếu quantity=0 thì bỏ qua
-    if (Number(quantity) === 0) return;
 
     //lưu listCart vào store redux
     dispatch(addListCartActions.addCart(product));
@@ -109,7 +106,7 @@ const DetailPage = () => {
     });
 
     return (
-      <div className="detailpage-container my-5">
+      <div className="detailpage-container mb-5">
         <div className="maindetail-container row">
           <div className="col-12 col-md-6">
             <div className="row mt-5">
@@ -159,16 +156,26 @@ const DetailPage = () => {
               CATEGORY:
               <span className="ms-2">{productDetailData.category}</span>
             </h5>
-            <div className="add-container d-sm-flex justify-center-content">
-              <div className="quantity d-flex justify-center-content">
+            <div className="add-container d-sm-flex ">
+              <div className="quantity d-flex justify-content-between ">
                 <h5 className="m-0 me-2 align-self-center">QUANTITY</h5>
-                <input type="number" min={0} ref={inputRef} />
+                {/* <input type="number" min={0} ref={inputRef} /> */}
+                <div className="align-self-center">
+                  <AiFillCaretLeft
+                    data-id={productDetailData._id.$oid}
+                    onClick={decreaseQuantityHandler}
+                  />
+                  <span className="quantity-container mx-2">{number}</span>
+                  <AiFillCaretRight
+                    data-id={productDetailData._id.$oid}
+                    onClick={increaseQuantityHandler}
+                  />
+                </div>
               </div>
               <button type="button" onClick={addCartHandler}>
                 Add to cart
               </button>
             </div>
-            {hasError && <p className="text-error">Please entered Quantity.</p>}
           </div>
         </div>
 
@@ -182,6 +189,6 @@ const DetailPage = () => {
     );
   }
 
-  return <div>Loading</div>;
+  return <h5>Loading...</h5>;
 };
 export default DetailPage;

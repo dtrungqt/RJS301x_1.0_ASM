@@ -1,32 +1,47 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import Card from "./components/UI/Card";
 import Footer from "./components/UI/Footer";
 import NavBar from "./components/UI/NavBar";
-import CartPage from "./pages/CartPage";
-import CheckoutPage from "./pages/CheckoutPage";
-import DetailPage from "./pages/DetailPage";
 import HomePage from "./pages/HomePage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import ShopPage from "./pages/ShopPage";
+// import CartPage from "./pages/CartPage";
+// import CheckoutPage from "./pages/CheckoutPage";
+// import DetailPage from "./pages/DetailPage";
+// import LoginPage from "./pages/LoginPage";
+// import RegisterPage from "./pages/RegisterPage";
+// import ShopPage from "./pages/ShopPage";
+
+const ShopPage = React.lazy(() => import("./pages/ShopPage"));
+const DetailPage = React.lazy(() => import("./pages/DetailPage"));
+const CartPage = React.lazy(() => import("./pages/CartPage"));
+const LoginPage = React.lazy(() => import("./pages/LoginPage"));
+const RegisterPage = React.lazy(() => import("./pages/RegisterPage"));
+const CheckoutPage = React.lazy(() => import("./pages/CheckoutPage"));
 
 function App() {
   return (
     <React.Fragment>
       <Card>
         <NavBar />
-        <Routes>
-          <Route path="/" element={<Navigate replace to="/home" />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/shop" element={<ShopPage />} />
-          <Route path="/shop/:productId" element={<DetailPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-        </Routes>
+        <Suspense
+          fallback={
+            <div>
+              <h5>Loading...</h5>
+            </div>
+          }
+        >
+          <Routes>
+            <Route path="/" element={<Navigate replace to="/home" />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/shop" element={<ShopPage />} />
+            <Route path="/shop/:productId" element={<DetailPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+          </Routes>
+        </Suspense>
       </Card>
       <Footer />
     </React.Fragment>

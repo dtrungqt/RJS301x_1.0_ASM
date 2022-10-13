@@ -27,7 +27,7 @@ const loginSlice = createSlice({
   name: "login",
   initialState: initialLoginState,
   reducers: {
-    onLogin(state) {
+    onLogin(state, action) {
       state.isLogin = true;
     },
     onLogout(state) {

@@ -22,6 +22,7 @@ const CheckoutPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const listCart = useSelector((state) => state.listCart.products);
+
   let totalPrice = 0;
   useEffect(() => {
     const storedListCart = getStoredItem("listCart");

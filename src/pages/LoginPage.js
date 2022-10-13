@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useInput from "./../hooks/use-input";
 import { useDispatch } from "react-redux";
 import { loginStatusActions } from "../store";
@@ -47,9 +47,8 @@ const LoginPage = () => {
       );
       if (dataUser.length > 0) {
         //ĐĂNG NHẬP THÀNH CÔNG
-        dispatch(loginStatusActions.onLogin());
-
         let [currentUser] = dataUser;
+        dispatch(loginStatusActions.onLogin());
         currentUser = { ...currentUser, isLogin: true };
         currentUser = JSON.stringify(currentUser);
         // console.log(currentUser);

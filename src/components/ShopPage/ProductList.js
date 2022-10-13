@@ -70,26 +70,26 @@ const ProductList = () => {
   return (
     <div className="productlist-container my-5 row">
       <div className="categories-container col-12 col-md-3">
-        <div className="categories">
-          <h2>CATEGORIES</h2>
+        <div className="categories mb-2">
+          <h3>CATEGORIES</h3>
           <div className="categories-title mt-4" onClick={selectListHandler}>
-            <h3>APPLE</h3>
+            <h4>APPLE</h4>
             <ul>
               <li>All</li>
             </ul>
-            <h3>IPHONE & MAC</h3>
+            <h4>IPHONE & MAC</h4>
             <ul>
               <li>IPhone</li>
               <li>IPad</li>
               <li>Macbook</li>
             </ul>
 
-            <h3>WIRELESS</h3>
+            <h4>WIRELESS</h4>
             <ul>
               <li>Airpod</li>
               <li>Watch</li>
             </ul>
-            <h3>OTHER</h3>
+            <h4>OTHER</h4>
             <ul>
               <li>Mouse</li>
               <li>Keyboard</li>
