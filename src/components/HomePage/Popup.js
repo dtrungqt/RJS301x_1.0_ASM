@@ -23,21 +23,25 @@ const Popup = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-12 col-lg-6">
-            <img
-              className="img-detail"
-              src={detailProduct.img1}
-              alt={detailProduct.name}
-            />
+          <div className="col-12 col-md-6">
+            <div className="img-detail-container">
+              <img
+                className="img-detail"
+                src={detailProduct.img1}
+                alt={detailProduct.name}
+              />
+            </div>
           </div>
 
-          <div className="col-12 col-lg-6">
+          <div className="col-12 col-md-6">
             <h3>{detailProduct.name}</h3>
             <h4>{`${detailProduct.price
               .toString()
               .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")} VND`}</h4>
-            <p>{detailProduct.short_desc}</p>
-            <button type="button">
+            <div className="shortdescrip-container">
+              <p className="me-2">{detailProduct.short_desc}</p>
+            </div>
+            <button type="button" className="mb-2">
               <Link className="link" to={`/shop/${detailProduct._id.$oid}`}>
                 <FaShoppingCart />
                 View Detail

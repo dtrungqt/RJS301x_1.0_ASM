@@ -147,7 +147,7 @@ p {
 /*////////////////////////////////////////////////////////////////////////////////////////////////////*/
 .banner-container {
   width: 100%;
-  height: 50vh;
+  height: 45vh;
   background-image: url("../public/images/banner1.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -185,12 +185,13 @@ p {
   margin-top: 4rem;
 }
 
-.collections-title h2 {
-  font-weight: 600;
+.collection-img {
+  /* width: 25rem; */
+  max-height: 16rem;
 }
 
-.link-cursor:hover {
-  cursor: default;
+.collections-title h2 {
+  font-weight: 600;
 }
 
 .collections-container img:hover {
@@ -336,6 +337,7 @@ p {
 /* CSS CHO Popup  */
 /*////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
 .popup-container {
   position: fixed;
   top: 50%;
@@ -349,12 +351,17 @@ p {
 }
 
 .content-container {
-  min-width: 80%;
-  /* height: 90%; */
-  overflow: none;
+  width: 90%;
+  /* min-height: 90%; */
+  /* overflow: none; */
   /* overflow-y: auto; */
 }
 
+.shortdescrip-container {
+  max-height: 16rem;
+  margin-bottom: 1rem;
+  overflow: auto;
+}
 /* .content-container p {
   overflow-y: auto;
 } */
@@ -703,8 +710,44 @@ p {
   .navbar-container {
     padding: 1rem 0;
   }
+
+  .popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75vw;
+    height: 75vh;
+    z-index: 100;
+    overflow: hidden;
+    background-color: white;
+  }
 }
 
+@media screen and (max-width: 767px) {
+  .popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 80vh;
+    z-index: 100;
+    overflow: hidden;
+    background-color: white;
+  }
+
+  .shortdescrip-container {
+    max-height: 10rem;
+  }
+  .img-detail-container {
+    text-align: center;
+  }
+  .img-detail {
+    width: 12rem;
+    height: 12rem;
+  }
+}
 @media screen and (max-width: 700px) {
   .card {
     max-width: 100%;
@@ -749,5 +792,30 @@ p {
   }
   .form-group.last-group {
     border-bottom: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    overflow: hidden;
+    background-color: white;
+  }
+  .shortdescrip-container {
+    max-height: 15rem;
+  }
+  .img-product.card-img-top {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .link-cursor.collection-img {
+    padding: 0 0.2rem;
   }
 }

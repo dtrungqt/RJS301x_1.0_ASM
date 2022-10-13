@@ -15,16 +15,16 @@ const ProductItem = (props) => {
         props.col3 ? "col-12 col-sm-4" : "col-12 col-sm-3"
       }  ${props.list ? "list float-sm-start" : ""}`}
     >
-      <img
-        className="img-product card-img-top"
-        src={product.img1}
-        alt={product.name}
-        width="100%"
-        height="100%"
-        data-product-id={product._id.$oid}
-        // data-product-id dùng để tạo 1 đối tượng có thuộc tính productId trong thuộc tính dataset của target
-        onClick={props.onFunctionHandler}
-      />
+      <div>
+        <img
+          className="img-product card-img-top"
+          src={product.img1}
+          alt={product.name}
+          data-product-id={product._id.$oid}
+          // data-product-id dùng để tạo 1 đối tượng có thuộc tính productId trong thuộc tính dataset của target
+          onClick={props.onFunctionHandler}
+        />
+      </div>
       <div className="product-info card-body">
         <h5>{product.name}</h5>
         <h6>
