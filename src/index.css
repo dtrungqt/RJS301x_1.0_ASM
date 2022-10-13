@@ -469,7 +469,7 @@ p {
 .add-container h5 {
   color: rgb(103, 103, 103);
 }
-.quanity {
+.quantity {
   padding: 0.4rem 1rem;
   border: solid 1px rgb(192, 192, 192);
   width: 100%;
@@ -581,7 +581,7 @@ p {
   padding: 1rem;
 }
 
-.quantity {
+.quantity-container {
   font-style: normal;
 }
 
@@ -639,6 +639,41 @@ p {
   font-weight: 600;
 }
 
+/* CSS CHO CheckoutPage  */
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.price-box {
+  background-color: rgb(245, 245, 245);
+  padding: 2rem;
+}
+
+.item-container {
+  border-bottom: solid 2px rgb(156, 156, 156);
+}
+.item-name {
+  font-weight: 600;
+  color: black;
+}
+
+.form-gr input {
+  border: solid 1px rgb(188, 188, 188);
+  font-size: 0.9rem;
+  color: rgb(103, 103, 103);
+}
+
+.form-gr button {
+  border: none;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  background-color: rgb(71, 69, 69);
+  color: #fff;
+  font-weight: 500;
+}
+
+.form-gr button:hover {
+  background-color: rgb(31, 31, 31);
+  font-weight: 600;
+}
 /*////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /* RESPONSIVE TOÀN TRANG WEB  */
@@ -676,11 +711,23 @@ p {
   }
 
   .navbar-container {
-    margin-left: 1rem;
+    margin: 0 1rem;
+  }
+  .homepage-container {
+    margin: 0 1rem;
+  }
+  .detailpage-container {
+    margin: 0 1rem;
   }
 
-  .detailpage-container {
-    margin-left: 1rem;
+  .shoppage-container {
+    margin: 0 1rem;
+  }
+  .cartpage-container {
+    margin: 0 1rem;
+  }
+  .checkout-container {
+    margin: 0 1rem;
   }
   .loginpage-container {
     background-image: none;

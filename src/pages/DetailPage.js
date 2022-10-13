@@ -58,8 +58,8 @@ const DetailPage = () => {
   // console.log(data);
   const addCartHandler = () => {
     //validate
-    const quanity = inputRef.current.value;
-    if (!quanity) {
+    const quantity = inputRef.current.value;
+    if (!quantity) {
       setHasError(true);
       return;
     }
@@ -76,12 +76,12 @@ const DetailPage = () => {
       id: productDetailData._id.$oid,
       name: productDetailData.name,
       price: productDetailData.price,
-      quanity: quanity,
+      quantity: Number(quantity),
       img: productDetailData.img1,
     };
 
-    //Nếu quanity=0 thì bỏ qua
-    if (Number(quanity) === 0) return;
+    //Nếu quantity=0 thì bỏ qua
+    if (Number(quantity) === 0) return;
 
     //lưu listCart vào store redux
     dispatch(addListCartActions.addCart(product));
@@ -90,8 +90,9 @@ const DetailPage = () => {
     listCart.push(product);
     localStorage.setItem("listCart", JSON.stringify(listCart));
 
-    // console.log(product);
+    console.log(product);
     console.log(listCart);
+    alert("Add to cart successfully!");
   };
 
   if (productDetailData.category) {
@@ -159,15 +160,15 @@ const DetailPage = () => {
               <span className="ms-2">{productDetailData.category}</span>
             </h5>
             <div className="add-container d-sm-flex justify-center-content">
-              <div className="quanity d-flex justify-center-content">
-                <h5 className="m-0 me-2 align-self-center">QUANITY</h5>
+              <div className="quantity d-flex justify-center-content">
+                <h5 className="m-0 me-2 align-self-center">QUANTITY</h5>
                 <input type="number" min={0} ref={inputRef} />
               </div>
               <button type="button" onClick={addCartHandler}>
                 Add to cart
               </button>
             </div>
-            {hasError && <p className="text-error">Please entered Quanity.</p>}
+            {hasError && <p className="text-error">Please entered Quantity.</p>}
           </div>
         </div>
 

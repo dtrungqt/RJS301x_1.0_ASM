@@ -28,9 +28,7 @@ const ProductItem = (props) => {
       <div className="product-info card-body">
         <h5>{product.name}</h5>
         <h6>
-          {`${product.price
-            .toString()
-            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")} VND`}
+          {`${product.price.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")} VND`}
 
           {/* .toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.") dùng để biến đổi 1 số thành 1 string có dấu . phân cách giữa các đơn vị. Ví dụ 1000 -> 1.000
         Link:https://blog.abelotech.com/posts/number-currency-formatting-javascript/  */}

@@ -9,6 +9,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import { ImArrowLeft2, ImArrowRight2 } from "react-icons/im";
 import { FaGift } from "react-icons/fa";
+import useSetItem from "./../hooks/use-setItem";
 
 const CartPage = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,6 @@ const CartPage = () => {
   }, []);
   console.log(listCart);
 
-  let totalPrice = 0;
   let cartRow = <div></div>;
   let shoppingCartBody = <div></div>;
 
@@ -43,13 +43,89 @@ const CartPage = () => {
 
   const deleteItemHandler = (event) => {
     const itemID = event.target.dataset.id;
+    console.log(itemID);
     dispatch(addListCartActions.deleteCart(itemID));
+  };
+
+  const increaseQuantityHandler = (event) => {
+    const itemID = event.target.dataset.id;
+    console.log(itemID);
+    //nếu click vào thẻ svg => dataset.id có giá trị
+    //nếu click vào thẻ path => dataset.id = undefined => không thực thi
+    if (!itemID) return;
+
+    //listCart đã bị freeze - tức là read only, không thể gán lại các giá trị
+    //=> Tạo 1 bản shallow copy của listCart(*). Vì đây chỉ là bản shallow copy, nên các obj là các phần tử của mảng vẫn bị freeze => Tạo bản shallow coppy của obj cần thay đổi giá trị (**)->thay đổi giá trị ở bản shallow coppy (***)-> xóa obj đó ra khỏi mảng (****) rồi thêm lại bản shallow coppy đã thay đổi giá trị vào (*****)
+    let listCartCopy = [...listCart]; //(*)
+    let itemIndex; //index của phần tử cần tăng quantity
+
+    const searchItem = listCart.find((item, index) => {
+      itemIndex = index;
+      // trong trường hợp cải tiến chức năng: lưu sản phẩm theo tài khoản thì cần bổ sung thêm điều kiện cho lệnh return bên dưới
+      return item.id === itemID;
+    });
+
+    //tạo bản shallow copy của obj
+    let itemCopy = { ...listCartCopy[itemIndex] }; //(**)
+
+    if (listCart[itemIndex].quantity > 9) return; //max quantity =10. Nếu > 10 thì thoát khỏi hàm
+    const quantity = itemCopy.quantity;
+    itemCopy.quantity = quantity + 1; //(***)
+
+    listCartCopy.splice(itemIndex, 1); //(****)
+    listCartCopy.splice(itemIndex, 0, itemCopy); //(*****)-thêm phần tử mới vào chính vị trị của phần tử cũ đã bị xóa
+    dispatch(addListCartActions.updateCart(listCartCopy));
+
+    // //lưu vào local storage
+    const dataJSON = JSON.stringify(listCartCopy);
+    localStorage.setItem("listCart", dataJSON);
+
+    console.log(listCartCopy);
+  };
+
+  const decreaseQuantityHandler = (event) => {
+    const itemID = event.target.dataset.id;
+    // console.log(itemID);
+
+    if (!itemID) return;
+    let listCartCopy = [...listCart];
+    let itemIndex;
+
+    const searchItem = listCart.find((item, index) => {
+      itemIndex = index;
+      // trong trường hợp cải tiến chức năng: lưu sản phẩm theo tài khoản thì cần bổ sung thêm điều kiện cho lệnh return bên dưới
+      return item.id === itemID;
+    });
+
+    let itemCopy = { ...listCartCopy[itemIndex] };
+
+    // if (listCart[itemIndex].quantity > 9) return; //min quantity = 0.
+    const quantity = itemCopy.quantity;
+    itemCopy.quantity = quantity - 1;
+
+    if (itemCopy.quantity === 0) {
+      //nếu quantity = 0 thì xóa hẳn item ra khỏi mảng - tức xóa hàng dữ liệu của item ra khỏi cart table
+      listCartCopy.splice(itemIndex, 1);
+    } else {
+      //nếu quantity > 0 thì cập nhật item bằng item có giá trị quantity mới
+      listCartCopy.splice(itemIndex, 1);
+      listCartCopy.splice(itemIndex, 0, itemCopy);
+    }
+
+    dispatch(addListCartActions.updateCart(listCartCopy));
+
+    // //lưu vào local storage
+    const dataJSON = JSON.stringify(listCartCopy);
+    localStorage.setItem("listCart", dataJSON);
+
+    console.log(listCartCopy);
   };
   //NẾU CÓ HÀNG ĐƯỢC THÊM VÀO GIỎ HÀNG THÌ HIỂN THỊ BẢNG THỐNG KÊ SẢN PHẨM
   //////////////////////////////////////////////////////////////////////////
   if (listCart.length > 0) {
+    let totalPrice = 0;
     cartRow = listCart.map((data) => {
-      const priceProduct = data.price * Number(data.quanity);
+      const priceProduct = data.price * data.quantity;
       totalPrice = totalPrice + priceProduct;
       return (
         <tr key={data.id}>
@@ -60,14 +136,21 @@ const CartPage = () => {
             <h5>{data.name}</h5>
           </td>
           <td>
-            <h6>{`${data.price
-              .toString()
-              .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")} VND`}</h6>
+            <h6>{`${data.price.replace(
+              /(\d)(?=(\d{3})+(?!\d))/g,
+              "$1."
+            )} VND`}</h6>
           </td>
           <td>
-            <AiFillCaretLeft data-id={data.id} />
-            <span className="quantity mx-2">{data.quanity}</span>
-            <AiFillCaretRight data-id={data.id} />
+            <AiFillCaretLeft
+              data-id={data.id}
+              onClick={decreaseQuantityHandler}
+            />
+            <span className="quantity-container mx-2">{data.quantity}</span>
+            <AiFillCaretRight
+              data-id={data.id}
+              onClick={increaseQuantityHandler}
+            />
           </td>
           <td>
             <h6>{`${priceProduct
