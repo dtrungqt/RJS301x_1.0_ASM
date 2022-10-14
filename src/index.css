@@ -215,11 +215,11 @@ p {
 /*////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 .animations {
-  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 2s; /* Firefox < 16 */
-  -ms-animation: fadein 2s; /* Internet Explorer */
-  -o-animation: fadein 2s; /* Opera < 12.1 */
-  animation: fadein 2s;
+  -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1s; /* Firefox < 16 */
+  -ms-animation: fadein 1s; /* Internet Explorer */
+  -o-animation: fadein 1s; /* Opera < 12.1 */
+  animation: fadein 1s;
 }
 
 .img-product:hover {
@@ -577,6 +577,9 @@ p {
 /* CSS CHO CartPage  */
 /*////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.cartpage-container {
+  min-height: 60vh;
+}
 .shoppingcart-container thead {
   background-color: rgb(245, 245, 245);
 }
@@ -678,11 +681,111 @@ p {
   background-color: rgb(31, 31, 31);
   font-weight: 600;
 }
+
+/* CSS CHO LiveChatIcon va LiveChatBox  */
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.chaticon {
+  font-size: 3rem;
+  position: fixed;
+  bottom: 10%;
+  right: 3%;
+  color: rgb(0, 136, 255);
+}
+
+.chaticon:hover {
+  cursor: pointer;
+}
+
+.chatbox-container {
+  width: 30vw;
+  position: fixed;
+  bottom: 20%;
+  right: 6%;
+  z-index: 100;
+  /* padding: 1.5rem; */
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.chatbox-header {
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  border-bottom: solid 2px rgb(230, 230, 230);
+}
+.chatbox-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-style: normal;
+  color: #111;
+}
+
+.chatbox-header button {
+  border: none;
+  padding: 0.2rem 0.5rem;
+  background-color: rgb(220, 220, 220);
+  font-size: 0.85rem;
+  color: rgb(110, 110, 110);
+}
+
+.chatbox-body {
+  margin: 0.5rem 1.5rem 0.5rem 0.5rem;
+  height: 40vh;
+}
+
+.chatbox-body .user-chat {
+  text-align: right;
+}
+.chatbox-body .user-chat span {
+  background-color: rgb(3, 167, 232);
+  color: white;
+  padding: 0.4rem 0.6rem;
+  border-radius: 5px;
+}
+.chatbox-body .admin-chat {
+  margin-bottom: 0.7rem;
+}
+.chatbox-body .admin-chat span {
+  background-color: rgb(240, 240, 240);
+  color: rgb(110, 110, 110);
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+}
+
+.admin-chat.long {
+  width: 80%;
+  background-color: rgb(240, 240, 240);
+  color: rgb(110, 110, 110);
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+}
+
+.chatbox-footer {
+  padding: 1rem 0.5rem 1rem 0.5rem;
+  border-top: solid 2px rgb(230, 230, 230);
+  background-color: rgb(240, 240, 240);
+  border-radius: 0 0 20px 20px;
+}
+
 /*////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /* RESPONSIVE TOÀN TRANG WEB  */
 /*////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+@media screen and (max-width: 1200px) {
+  .chatbox-container {
+    width: 40vw;
+    position: fixed;
+    bottom: 20%;
+    right: 6%;
+    z-index: 100;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+}
+
 @media screen and (max-width: 1170px) {
   .cart-total .box {
     padding: 0.8rem;
@@ -718,6 +821,12 @@ p {
     z-index: 100;
     overflow: hidden;
     background-color: white;
+  }
+}
+
+@media screen and (max-width: 830px) {
+  .chatbox-footer input {
+    max-width: 10rem;
   }
 }
 

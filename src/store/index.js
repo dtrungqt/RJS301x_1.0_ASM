@@ -9,6 +9,8 @@ const initialLoginState = { isLogin: false };
 
 const initialListCartState = { products: [] };
 
+const initialLiveChatState = { isOpen: false };
+
 const popupSlice = createSlice({
   name: "popup",
   initialState: initialPopupState,
@@ -63,11 +65,22 @@ const listCartSlice = createSlice({
   },
 });
 
+const liveChatSlice = createSlice({
+  name: "liveChat",
+  initialState: initialLiveChatState,
+  reducers: {
+    toggleState(state) {
+      state.isOpen = !state.isOpen;
+    },
+  },
+});
+
 const store = configureStore({
   reducer: {
     popup: popupSlice.reducer,
     loginStatus: loginSlice.reducer,
     listCart: listCartSlice.reducer,
+    liveChat: liveChatSlice.reducer,
   },
 });
 
@@ -75,3 +88,4 @@ export default store;
 export const popupActions = popupSlice.actions;
 export const loginStatusActions = loginSlice.actions;
 export const addListCartActions = listCartSlice.actions;
+export const liveChatActions = liveChatSlice.actions;

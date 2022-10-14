@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addListCartActions } from "../store";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 
 import ProductItem from "../components/UI/ProductItem";
 import useHttp from "../hooks/use-http";
+import ReactDOM from "react-dom";
+import LiveChatIcon from "../components/UI/LiveChatIcon";
+import LiveChatBox from "./../components/UI/LiveChatBox";
 
 const DetailPage = () => {
+  const isOpenLiveChat = useSelector((state) => state.liveChat.isOpen);
   const [productDetailData, setProductDetailData] = useState([]);
   const [relatedProductData, setRelatedProductData] = useState([]);
   const [number, setNumber] = useState(1);
@@ -185,6 +189,12 @@ const DetailPage = () => {
         </div>
 
         <div className="related-container clearfix">{relatedProductList}</div>
+        <LiveChatIcon />
+        {isOpenLiveChat &&
+          ReactDOM.createPortal(
+            <LiveChatBox />,
+            document.getElementById("popup-root")
+          )}
       </div>
     );
   }

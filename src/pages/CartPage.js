@@ -9,9 +9,12 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import { ImArrowLeft2, ImArrowRight2 } from "react-icons/im";
 import { FaGift } from "react-icons/fa";
-import useSetItem from "./../hooks/use-setItem";
+import ReactDOM from "react-dom";
+import LiveChatIcon from "../components/UI/LiveChatIcon";
+import LiveChatBox from "./../components/UI/LiveChatBox";
 
 const CartPage = () => {
+  const isOpenLiveChat = useSelector((state) => state.liveChat.isOpen);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const listCart = useSelector((state) => state.listCart.products);
@@ -230,6 +233,12 @@ const CartPage = () => {
       </div>
       <h3 className="text-start mb-4 mt-5">SHOPPING CART</h3>
       {shoppingCartBody}
+      <LiveChatIcon />
+      {isOpenLiveChat &&
+        ReactDOM.createPortal(
+          <LiveChatBox />,
+          document.getElementById("popup-root")
+        )}
     </div>
   );
 };

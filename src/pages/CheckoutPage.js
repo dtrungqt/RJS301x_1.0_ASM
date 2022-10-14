@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { addListCartActions } from "../store";
 import { useNavigate } from "react-router-dom";
 import useInput from "../hooks/use-input";
+import ReactDOM from "react-dom";
+import LiveChatIcon from "../components/UI/LiveChatIcon";
+import LiveChatBox from "./../components/UI/LiveChatBox";
 
 const isNotEmpty = (value) => value.trim() !== "";
 const isEmail = (value) => value.includes("@");
@@ -19,6 +22,7 @@ const getStoredItem = (storedDataName) => {
 
 //component chinh
 const CheckoutPage = () => {
+  const isOpenLiveChat = useSelector((state) => state.liveChat.isOpen);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const listCart = useSelector((state) => state.listCart.products);
@@ -231,6 +235,12 @@ const CheckoutPage = () => {
           </div>
         </div>
       </div>
+      <LiveChatIcon />
+      {isOpenLiveChat &&
+        ReactDOM.createPortal(
+          <LiveChatBox />,
+          document.getElementById("popup-root")
+        )}
     </div>
   );
 };
